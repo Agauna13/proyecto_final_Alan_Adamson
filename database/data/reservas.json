@@ -1,0 +1,58 @@
+[
+    {
+        "pax": 5,
+        "hora": "14:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 1,
+        "sala_terraza": "terraza"
+    },
+    {
+        "pax": 5,
+        "hora": "15:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 2,
+        "sala_terraza": "terraza"
+    },
+    {
+        "pax": 5,
+        "hora": "16:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 3,
+        "sala_terraza": "terraza"
+    },
+    {
+        "pax": 10,
+        "hora": "17:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 4,
+        "sala_terraza": "sala"
+    },
+    {
+        "pax": 2,
+        "hora": "18:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 5,
+        "sala_terraza": "sala"
+    },
+    {
+        "pax": 4,
+        "hora": "19:30",
+        "fecha": "2025-07-07",
+        "cliente_id": 6,
+        "sala_terraza": "sala"
+    },
+    {
+        "pax": 7,
+        "hora": "20:30",
+        "fecha": "2025-07-08",
+        "cliente_id": 7,
+        "sala_terraza": "terraza"
+    },
+    {
+        "pax": 6,
+        "hora": "21:30",
+        "fecha": "2025-07-08",
+        "cliente_id": 1,
+        "sala_terraza": "terraza"
+    }
+]

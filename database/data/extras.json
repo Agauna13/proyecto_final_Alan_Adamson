@@ -1,0 +1,47 @@
+[
+    {
+        "nombre": "Red Bull",
+        "precio": "0.50"
+    },
+    {
+        "nombre": "Queso",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Atún",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Serrano",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "York",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Camaiot",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Sobrassada",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Huevo",
+        "precio": "1.30"
+    },
+    {
+        "nombre": "Bacon",
+        "precio": "1.30"
+    },
+    {
+        "nombre": "Ingrediente extra",
+        "precio": "1.00"
+    },
+    {
+        "nombre": "Bacon y queso",
+        "precio": "1.00"
+    }
+
+]

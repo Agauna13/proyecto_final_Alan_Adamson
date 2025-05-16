@@ -1,0 +1,675 @@
+[
+    {
+        "nombre": "Café solo",
+        "precio": "1.20",
+        "grupo": "bebida",
+        "categoria": "Bebidas Calientes",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Cortado",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "1.30",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Café con leche",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "1.50",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Carajillo",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "2.00",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Café Bombón",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "2.20",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Chocolate caliente",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "3.00",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Infusión",
+        "categoria": "Bebidas Calientes",
+        "grupo": "bebida",
+        "precio": "1.50",
+        "css_id": "bebidasCalientes"
+    },
+    {
+        "nombre": "Refresco lata",
+        "categoria": "Refrescos y cervezas",
+        "grupo": "bebida",
+        "precio": "2.00",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Refresco Botella",
+        "categoria": "Refrescos y cervezas",
+        "grupo": "bebida",
+        "precio": "2.40",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Caña pequeña",
+        "categoria": "Refrescos y cervezas",
+        "grupo": "bebida",
+        "precio": "1.80",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Caña Mediana",
+        "categoria": "Refrescos y cervezas",
+        "grupo": "bebida",
+        "precio": "2.00",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Jarra",
+        "categoria": "Refrescos y cervezas",
+        "precio": "3.00",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Alhambra verde",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.80",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Estrella Damm",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Daura (Sin gluten)",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.80",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Estrella Damm 0,0",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Estrella Galicia",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Mahou",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Heineken",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Copa de vino tinto Rioja Crianza",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Copa de vino blanco Verdejo",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Botella de vino",
+        "categoria": "Refrescos y cervezas",
+        "precio": "9.00",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Agua 0.5L",
+        "categoria": "Refrescos y cervezas",
+        "precio": "1.50",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Agua 1.5L",
+        "categoria": "Refrescos y cervezas",
+        "precio": "2.00",
+        "grupo": "bebida",
+        "css_id": "refrescosCervezas"
+    },
+    {
+        "nombre": "Copa pequeña",
+        "categoria": "Licores",
+        "precio": "2.20",
+        "grupo": "bebida",
+        "css_id": "licores"
+    },
+    {
+        "nombre": "Copa grande",
+        "categoria": "Licores",
+        "precio": "2.80",
+        "grupo": "bebida",
+        "css_id": "licores"
+    },
+    {
+        "nombre": "Chupitos",
+        "categoria": "Licores",
+        "precio": "2.00",
+        "grupo": "bebida",
+        "css_id": "licores"
+    },
+    {
+        "nombre": "Cubata",
+        "categoria": "Licores",
+        "precio": "6.50",
+        "grupo": "bebida",
+        "css_id": "licores"
+    },
+    {
+        "nombre": "Cubata especial",
+        "categoria": "Licores",
+        "precio": "8.50",
+        "grupo": "bebida",
+        "css_id": "licores"
+    },
+    {
+        "nombre": "Tomate",
+        "categoria": "Tostadas",
+        "precio": "1.70",
+        "grupo": "comida",
+        "css_id": "tostadas"
+    },
+    {
+        "nombre": "Pan moreno y tomate",
+        "categoria": "Tostadas",
+        "precio": "1.90",
+        "grupo": "comida",
+        "css_id": "tostadas"
+    },
+    {
+        "nombre": "Mantequilla y mermelada",
+        "categoria": "Tostadas",
+        "precio": "1.70",
+        "grupo": "comida",
+        "css_id": "tostadas"
+    },
+    {
+        "nombre": "Pan moreno y aguacate",
+        "categoria": "Tostadas",
+        "precio": "3.80",
+        "grupo": "comida",
+        "css_id": "tostadas"
+    },
+    {
+        "nombre": "1 Ingrediente",
+        "categoria": "Bocadillos",
+        "precio": "4.00",
+        "grupo": "comida",
+        "css_id": "bocadillos"
+    },
+    {
+        "nombre": "2 Ingredientes",
+        "categoria": "Bocadillos",
+        "precio": "4.80",
+        "grupo": "comida",
+        "css_id": "bocadillos"
+    },
+    {
+        "nombre": "Tortilla Francesa",
+        "categoria": "Bocadillos",
+        "precio": "5.00",
+        "grupo": "comida",
+        "css_id": "bocadillos"
+    },
+    {
+        "nombre": "Bacon y queso",
+        "categoria": "Bocadillos",
+        "precio": "5.50",
+        "grupo": "comida",
+        "css_id": "bocadillos"
+    },
+    {
+        "nombre": "Pepito de lomo o pollo",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+
+    {
+        "nombre": "Pepito tradicional Dimonis",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "7.70",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+    {
+        "nombre": "Pepito Mokitrokis",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "7.70",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+    {
+        "nombre": "Sándwich vegetal triple",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "7.00",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+    {
+        "nombre": "Sándwich tradicional Dimonis",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "7.00",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+    {
+        "nombre": "Sándwich mixto",
+        "categoria": "Sandwiches y pepitos",
+        "precio": "4.00",
+        "grupo": "comida",
+        "css_id": "sandwichesPepitos"
+    },
+    {
+        "nombre": "Croquetas de pollo",
+        "categoria": "Entrantes",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Calamares romana",
+        "categoria": "Entrantes",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Fingers de pollo",
+        "categoria": "Entrantes",
+        "precio": "8.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Nachos Mokitrokis",
+        "categoria": "Entrantes",
+        "precio": "8.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Nachos con Mozzarella",
+        "categoria": "Entrantes",
+        "precio": "5.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Nachos 4 quesos",
+        "categoria": "Entrantes",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Bravas",
+        "categoria": "Entrantes",
+        "precio": "5.50",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Patatas con bacon y queso",
+        "categoria": "Entrantes",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Patatas 4 quesos",
+        "categoria": "Entrantes",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Ración de patatas",
+        "categoria": "Entrantes",
+        "precio": "3.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Ración de patata Teja",
+        "categoria": "Entrantes",
+        "precio": "3.50",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Ración de boniato frito",
+        "categoria": "Entrantes",
+        "precio": "5.00",
+        "grupo": "comida",
+        "css_id": "entrantes"
+    },
+    {
+        "nombre": "Perrito normal (Con cebolla crujiente)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "3.50",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Perrito Lechero (Con tortilla francesa)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "4.50",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Perrito tradicional Dimonis (Con beicon y queso con cebolla crujiente y salsa tradicional Dimonis)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "5.00",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Perrito Mokitrokis (Con queso, cebolla crujiente, pepinillo picado y salsa Mokitrokis)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "5.50",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa con queso",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "5.00",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa con queso y beicon",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa Mokitrokis (Con beicon, huevo, cebolla pochada, queso cheddar y salsa Mokitrokis)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "6.80",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa cabra (Con pan brioche, queso de cabra, cebolla pochada y mermelada de arándanos)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa pollo rebozado (Con pan brioche y queso cheddar)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "Hamburguesa tradicional Dimonis (Con queso, beicon, huevo, cebolla crujiente y salsa Dimonis)",
+        "categoria": "Perritos y hamburguesas",
+        "precio": "6.80",
+        "grupo": "comida",
+        "css_id": "perritosHamburguesas"
+    },
+    {
+        "nombre": "La Rafaelo (Con pan brioche, doble carne de Smash, queso cheddar, cebolla pochada, beicon, huevo y salsa de mostaza y miel)",
+        "categoria": "Nuestras hamburguesas especiales",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "hamburguesasEspeciales"
+    },
+    {
+        "nombre": "La Big-Burger (Con pan brioche, doble carne de Smash, queso cheddar, pepinillo picado, cebolla crujiente y salsa burger)",
+        "categoria": "Nuestras hamburguesas especiales",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "hamburguesasEspeciales"
+    },
+    {
+        "nombre": "La Angus (Con pan brioche, 120 gramos de carne con queso cheddar, cebolla pochada y huevo)",
+        "categoria": "Nuestras hamburguesas especiales",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "hamburguesasEspeciales"
+    },
+    {
+        "nombre": "Mixto (Con serrano y queso)",
+        "categoria": "Pam amb oli",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "pamboli"
+    },
+    {
+        "nombre": "Mallorquín (Con panceta, sobrasada y camaiot)",
+        "categoria": "Pam amb oli",
+        "precio": "13.00",
+        "grupo": "comida",
+        "css_id": "pamboli"
+    },
+    {
+        "nombre": "Cabrero con lomo y queso de cabra",
+        "categoria": "Pam amb oli",
+        "precio": "13.00",
+        "grupo": "comida",
+        "css_id": "pamboli"
+    },
+    {
+        "nombre": "Marinero con anchoas y atún",
+        "categoria": "Pam amb oli",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "pamboli"
+    },
+    {
+        "nombre": "Pollo rebozado o plancha con patatas (Con mozzarella, lechuga, tomate y salsa César)",
+        "categoria": "Fajitas",
+        "precio": "12.00",
+        "grupo": "comida",
+        "css_id": "fajitas"
+    },
+    {
+        "nombre": "Vegetal de atún (Con lechuga, tomate, huevo a la plancha y mayonesa)",
+        "categoria": "Fajitas",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "fajitas"
+    },
+    {
+        "nombre": "César (Lechuga, tomate, queso, pollo rebozado, picatostes y salsa César)",
+        "categoria": "Ensaladas",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "ensaladas"
+    },
+    {
+        "nombre": "Cabra (Lechuga, tomate, cebolla crujiente, queso de cabra y nueces)",
+        "categoria": "Ensaladas",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "ensaladas"
+    },
+    {
+        "nombre": "Mixta (Lechuga, tomate, York, queso, atún y cebolla cruda)",
+        "categoria": "Ensaladas",
+        "precio": "9.00",
+        "grupo": "comida",
+        "css_id": "ensaladas"
+    },
+    {
+        "nombre": "Hamburguesa vegana (Hamburguesa de berenjena, cebolla pochada y mermelada de arándanos)",
+        "categoria": "Nuestros Veganos",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "veganos"
+    },
+    {
+        "nombre": "Verduras en tempura",
+        "categoria": "Nuestros Veganos",
+        "precio": "6.00",
+        "grupo": "comida",
+        "css_id": "veganos"
+    },
+    {
+        "nombre": "Fajita (Berenjena, cebolla pochada, pimiento rojo y verde asado acompañado de patatas teja)",
+        "categoria": "Nuestros Veganos",
+        "precio": "12.00",
+        "grupo": "comida",
+        "css_id": "veganos"
+    },
+    {
+        "nombre": "Elige tu hamburguesa entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "categoria": "Menus Mokitrokis",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "menusMokitrokis"
+    },
+    {
+        "nombre": "Elige tu pepito Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "categoria": "Menus Mokitrokis",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "menusMokitrokis"
+    },
+    {
+        "nombre": "Elige tus dos perritos entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "categoria": "Menus Mokitrokis",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "menusMokitrokis"
+    },
+    {
+        "nombre": "Pechuga de pollo o lomo de cerdo a la plancha (Con ensalada, huevos y patatas)",
+        "categoria": "Platos combinados",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "platosCombinados"
+    },
+    {
+        "nombre": "Pechuga de pollo (Con cubierta de bacon y mozzarella acompañado de patatas teja)",
+        "categoria": "Platos combinados",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "platosCombinados"
+    },
+    {
+        "nombre": "Pollo rebozado (Con ensalada y patatas)",
+        "categoria": "Platos combinados",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "platosCombinados"
+    },
+    {
+        "nombre": "Margarita (Tomate y mozzarella)",
+        "categoria": "Pizzas",
+        "precio": "9.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Prosciuto (Tomate, York y mozzarella)",
+        "categoria": "Pizzas",
+        "precio": "9.50",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "4 Quesos (Mozzarella, edam, cheddar y roquefort)",
+        "categoria": "Pizzas",
+        "precio": "9.50",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Romana (Mozzarella, champiñones, pimiento, bacon y pollo)",
+        "categoria": "Pizzas",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Vegetariana (Mozzarella, espinacas, cebolla y queso de cabra)",
+        "categoria": "Pizzas",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Cabra (Mozarella, sobrasada, queso de cabra y miel)",
+        "categoria": "Pizzas",
+        "precio": "12.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Barbacoa (Mozzarella, carne picada, bacon y salsa barbacoa)",
+        "categoria": "Pizzas",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Carbonara (Mozzarella, bacon, champiñones, cebolla y nata)",
+        "categoria": "Pizzas",
+        "precio": "11.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Tradicional Dimonis (Mozzarella, carne picada, pimiento y Salsa Dimonis)",
+        "categoria": "Pizzas",
+        "precio": "10.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    },
+    {
+        "nombre": "Mokitrokis (Mozzarella, camaiot, lomo y roquefort)",
+        "categoria": "Pizzas",
+        "precio": "13.00",
+        "grupo": "comida",
+        "css_id": "pizzas"
+    }
+]

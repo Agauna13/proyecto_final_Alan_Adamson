@@ -1,0 +1,37 @@
+[
+    {
+        "nombre": "alan",
+        "telefono": "666666666",
+        "email": "alan@alan.com"
+    },
+    {
+        "nombre": "mariel",
+        "telefono": 666555666,
+        "email": "mariel@mariel.com"
+    },
+    {
+        "nombre": "marta",
+        "telefono": "655556665",
+        "email": "marta@marta.com"
+    },
+    {
+        "nombre": "isma",
+        "telefono": 654456654,
+        "email": "isma@isma.com"
+    },
+    {
+        "nombre": "francina",
+        "telefono": "698896698",
+        "email": "francina@francina.com"
+    },
+    {
+        "nombre": "rafa",
+        "telefono": "687786687",
+        "email": "rafa@rafa.com"
+    },
+    {
+        "nombre": "andrea",
+        "telefono": "632236632",
+        "email": "andrea@andrea.com"
+    }
+]
