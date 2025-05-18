@@ -13,7 +13,7 @@ class AdminPedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::with(['productos', 'mesa', 'reserva', 'factura'])
+        $pedidos = Pedido::with(['productos', 'mesa', 'reserva', 'factura', 'pedidoProductos'])
             ->orderBy('created_at', 'desc')
             ->get();
 

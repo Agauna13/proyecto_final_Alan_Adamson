@@ -11,7 +11,7 @@ class PedidoProducto extends Model
 
     public function extras()
     {
-        return $this->belongsToMany(Extra::class, 'pedido_producto_extra')
+        return $this->belongsToMany(Extra::class, 'pedido_producto_extras')
                     ->withPivot('cantidad');
     }
 

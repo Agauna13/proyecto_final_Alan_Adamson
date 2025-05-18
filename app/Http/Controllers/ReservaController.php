@@ -34,7 +34,14 @@ class ReservaController extends Controller
     public function store(Request $request)
     {
         if ($request->action === 'pedido') {
-            session(['reserva_temporal' => $request->all()]);
+            $cliente = Cliente::create([
+                'nombre' => $request->nombre,
+                'telefono' => $request->telefono,
+                'email' => $request->email ?? "Email no proporcionado"
+            ]);
+            $reservaDatos = $request->all();
+            $reservaDatos['cliente_id'] = $cliente->id;
+            session(['reserva_temporal' => $reservaDatos]);
 
             $productos = Producto::with('extras')->get();
 

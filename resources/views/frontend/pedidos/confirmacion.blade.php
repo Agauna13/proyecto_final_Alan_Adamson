@@ -19,13 +19,11 @@
 
     <form action="{{ route('pedidos.store') }}" method="POST">
         @csrf
-
         <h3 class="text-xl font-semibold mb-2">Productos seleccionados:</h3>
 
         @foreach ($productosUnicos as $index => $producto)
             <div class="border border-gray-600 rounded p-4 mb-4">
                 <input type="hidden" name="productos[{{ $index }}][producto_id]" value="{{ $producto->id }}">
-                <input type="hidden" name="productos[{{ $index }}][cantidad]" value="1">
                 <input type="hidden" name="productos[{{ $index }}][precio_unitario]" value="{{ $producto->precio }}">
 
                 <p><strong>{{ $producto->nombre }}</strong> ({{ number_format($producto->precio, 2) }} €)</p>
@@ -59,7 +57,7 @@
                 </div>
             @endforeach
         @endif
-
+        <h2>{{session('precio_total')}}</h2>
         <div class="mt-6">
             <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded">
                 Confirmar Pedido
