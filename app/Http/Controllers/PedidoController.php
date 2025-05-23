@@ -17,48 +17,11 @@ use Illuminate\Support\Facades\Session;
 class PedidoController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        $cantidades = collect($request->input('cantidad'))->filter(fn($q) => $q > 0);
-
-        $productoUnidades = collect();
-        $precioTotal = 0;
-
-        foreach ($cantidades as $productoId => $cantidad) {
-            $producto = Producto::with('extras')->find($productoId);
-            $productoUnidades->push($producto);
-            $precioTotal += $producto->precio;
-            if ($cantidad > 1) {
-                for ($i = 0; $i < $cantidad - 1; $i++) {
-                    $precioTotal += $producto->precio;
-                    $replica = $producto->replicate();
-                    $replica->id = $productoId;
-                    $productoUnidades->push($replica); // cada unidad individual
-                }
-            }
-        }
-
-        session(['precio_total' => $precioTotal]);
-        $reservaData = session('reserva_temporal');
-        $mesa = session()->has('mesa_id') ? Mesa::find(session('mesa_id')) : null;
-        $entrantes = Producto::where('categoria', 'Entrantes')->get();
-
-        return view('frontend.pedidos.confirmacion', [
-            'productosUnicos' => $productoUnidades,
-            'reservaData' => $reservaData,
-            'mesa' => $mesa,
-            'entrantes' => $entrantes
-        ]);
+        //
     }
 
     /**
@@ -99,18 +62,9 @@ class PedidoController extends Controller
 
             DB::commit();
 
+            session()->forget('reserva_temporal');
             // Cargar relaciones
-            $pedido->load('pedidoProductos.producto', 'pedidoProductos.extras');
-            $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
-
-            $totalExtras = $pedido->pedidoProductos->flatMap(function ($unidad) {
-                return $unidad->extras->map(function ($extra) {
-                    return $extra->precio * $extra->pivot->cantidad;
-                });
-            })->sum();
-
-            $precioTotal = $totalProductos + $totalExtras;
-            return view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));
+            return redirect()->route('pedidos.confirmacion', ['pedido' => $pedido->id]);
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'Error al guardar el pedido: ' . $e->getMessage());
@@ -121,11 +75,14 @@ class PedidoController extends Controller
     {
         foreach ($productosRequest as $productoData) {
             // Registrar cada unidad por separado para gestionar extras únicos por unidad
-            $pedido->productos()->attach($productoData['producto_id'], [
-                'precio_unitario' => $productoData['precio_unitario'],
-                'created_at' => now(),
-                'updated_at' => now(),
+            $pedido->productos()->attach([//sin el attach, laravel une los productos del mismo id en uno solo creando confusión a la hora de mostrar los extras
+                $productoData['producto_id'] => [
+                    'precio_unitario' => $productoData['precio_unitario'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
             ]);
+
 
             $pivotId = DB::table('pedido_productos')
                 ->where('pedido_id', $pedido->id)
@@ -183,10 +140,59 @@ class PedidoController extends Controller
     }
 
     /**
-     * Returns the data from a the menu form into the confirmation view
+     * Once the order is confirmed with the extra
      */
-    public function pedidoConfirmation(Request $request)
+    public function confirmacion(Pedido $pedido)
     {
-        return view('pedidos.confirmacion', ['productos' => $request->all()]);
+        $pedido->load('pedidoProductos.producto', 'pedidoProductos.extras');
+
+        $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
+
+        $totalExtras = $pedido->pedidoProductos->flatMap(function ($unidad) {
+            return $unidad->extras->map(function ($extra) {
+                return $extra->precio * $extra->pivot->cantidad;
+            });
+        })->sum();
+
+        $precioTotal = $totalProductos + $totalExtras;
+
+        return view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));
+    }
+
+
+
+
+    public function redirectToPedido(Request $request)
+    {
+        $cantidades = collect($request->input('cantidad'))->filter(fn($q) => $q > 0);
+
+        $productoUnidades = collect();
+        $precioTotal = 0;
+
+        foreach ($cantidades as $productoId => $cantidad) {
+            $producto = Producto::with('extras')->find($productoId);
+            $productoUnidades->push($producto);
+            $precioTotal += $producto->precio;
+            if ($cantidad > 1) {
+                for ($i = 0; $i < $cantidad - 1; $i++) {
+                    $precioTotal += $producto->precio;
+                    $replica = $producto->replicate();
+                    $replica->id = $productoId;
+                    $productoUnidades->push($replica); // cada unidad individual
+                }
+            }
+        }
+
+        session(['precio_total' => $precioTotal]);
+        $reservaData = session('reserva_temporal');
+        $mesa = session()->has('mesa_id') ? Mesa::find(session('mesa_id')) : null;
+        $entrantes = Producto::where('categoria', 'Entrantes')->get();
+
+        return view('frontend.pedidos.confirmacion', [
+            'productosUnicos' => $productoUnidades,
+            'reservaData' => $reservaData,
+            'mesa' => $mesa,
+            'entrantes' => $entrantes
+        ]);
     }
 }

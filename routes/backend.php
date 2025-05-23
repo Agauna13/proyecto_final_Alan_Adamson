@@ -11,7 +11,7 @@ use App\Http\Controllers\admin\AdminReservaController;
 Route::get('/', function(){
     return view('backend.dashboard');
 });
-
+Route::get('/mesasOcupadas', [AdminMesaController::class, 'mesasOcupadas'])->name('mesasOcupadas');
 Route::resource('productos', AdminProductoController::class);
 Route::resource('pedidos', AdminPedidoController::class);
 Route::resource('reservas', AdminReservaController::class);

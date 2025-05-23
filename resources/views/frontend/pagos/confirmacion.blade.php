@@ -5,21 +5,24 @@
 <h2>Pedido #{{ $pedido->id }}</h2>
 
 <h3>Productos</h3>
+
 @foreach ($pedido->pedidoProductos as $unidad)
-    <div>
-        <strong>{{ $unidad->producto->nombre }}</strong> - {{ $unidad->precio_unitario }}€
+    <div class="border-b border-gray-600 py-2">
+        <strong>{{ $unidad->producto->nombre }}</strong> - {{ number_format($unidad->precio_unitario, 2) }}€
 
         @if ($unidad->extras->isNotEmpty())
-            <ul>
+            <ul class="ml-4 text-sm text-gray-300">
                 @foreach ($unidad->extras as $extra)
-                    <li>{{ $extra->nombre }} x {{ $extra->pivot->cantidad }} = {{$extra->precio}}</li>
+                    <li>
+                        {{ $extra->nombre }} x {{ $extra->pivot->cantidad }} =
+                        {{ number_format($extra->precio * $extra->pivot->cantidad, 2) }}€
+                    </li>
                 @endforeach
             </ul>
         @endif
     </div>
 @endforeach
-
-<h3>Total: {{ number_format($precioTotal, 2) }}</h3>
+<h3>Total: {{ number_format($precioTotal, 2) }}€</h3>
 
 </div>
 @if (session('error'))

@@ -19,7 +19,13 @@ class AdminReservaController extends Controller
         $reservas = Reserva::with(['pedidos', 'cliente'])
             ->orderBy('fecha', 'asc')
             ->orderBy('hora', 'asc')
-            ->get();
+            ->get()
+            ->map(function ($reserva) {
+                Carbon::setLocale('es');
+                $reserva->fecha_formateada = Carbon::parse($reserva->fecha)->translatedFormat('l d-m-Y');
+                $reserva->hora_formateada = Carbon::parse($reserva->hora)->format('H:i');
+                return $reserva;
+            });
 
         return view('backend.reservas.index', compact('reservas'));
     }

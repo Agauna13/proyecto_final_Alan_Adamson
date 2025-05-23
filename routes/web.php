@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [ProductoController::class, 'index']);
+
+Route::get('/pedidos/{pedido}/confirmacion', [PedidoController::class, 'confirmacion'])->name('pedidos.confirmacion');
+Route::post('/pedidos/redireccion-pedido', [PedidoController::class, 'redirectToPedido'])->name('pedidos.redirectToPedido');
+
+
+Route::get('/', [ProductoController::class, 'index'])->name('home');
 
 Route::resource('productos', ProductoController::class);
 Route::resource('pedidos', PedidoController::class);

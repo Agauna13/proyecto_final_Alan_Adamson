@@ -13,19 +13,23 @@ class AdminPedidoController extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::with(['productos', 'mesa', 'reserva', 'factura', 'pedidoProductos'])
-            ->orderBy('created_at', 'desc')
-            ->get();
+        $pedidos = Pedido::with([
+            'pedidoProductos.producto',
+            'pedidoProductos.extras',
+            'mesa',
+            'reserva.cliente'
+        ])->latest()->get();
 
         return view('backend.pedidos.index', compact('pedidos'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('backend.pedidos.create');
     }
 
     /**
@@ -39,9 +43,25 @@ class AdminPedidoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Pedido $pedido)
     {
-        //
+        $pedido->load(
+            'pedidoProductos.producto',
+            'pedidoProductos.extras',
+            'reserva.cliente'
+        );
+
+        $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
+
+        $totalExtras = $pedido->pedidoProductos->flatMap(function ($unidad) {
+            return $unidad->extras->map(function ($extra) {
+                return $extra->precio * $extra->pivot->cantidad;
+            });
+        })->sum();
+
+        $precioTotal = $totalProductos + $totalExtras;
+
+        return view('backend.pedidos.show', compact('pedido', 'precioTotal'));
     }
 
     /**
@@ -63,8 +83,14 @@ class AdminPedidoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        try {
+            Pedido::findOrFail($id)->delete(); // en vez de destroy()
+
+            return redirect()->route('admin.pedidos.index')->with('success', 'Pedido eliminado correctamente');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 }

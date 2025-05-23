@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ExtraSeeder::class,
             ProductosextrasSeeder::class,
             ReservaSeeder::class,
+            MesaSeeder::class
         ]);
     }
 }

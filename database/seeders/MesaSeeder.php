@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MesaSeeder extends Seeder
 {
@@ -12,6 +13,12 @@ class MesaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $cantidadMesas = 40;
+
+        for ($i = 1; $i <= $cantidadMesas; $i++) {
+            DB::table('mesas')->insert([
+                'mesa_hash' => sha1($i),
+            ]);
+        }
     }
 }

@@ -1,59 +1,70 @@
 @extends('backend.layout')
 
 @section('content')
-<div class="container mx-auto px-4">
-    <h1 class="text-2xl font-bold mb-4">Lista de Pedidos</h1>
+<div class="p-6 bg-white rounded-xl shadow-md max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-extrabold text-blue-700 tracking-wide">Listado de Pedidos</h1>
+        <a href="{{ route('admin.pedidos.create') }}"
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition font-semibold">
+            Nuevo Pedido
+        </a>
+    </div>
 
-    @if ($pedidos->count())
-        <table class="min-w-full bg-white border border-gray-200">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="text-left px-4 py-2 border">ID</th>
-                    <th class="text-left px-4 py-2 border">Mesa</th>
-                    <th class="text-left px-4 py-2 border">Reserva</th>
-                    <th class="text-left px-4 py-2 border">Productos</th>
-                    <th class="text-left px-4 py-2 border">Factura</th>
-                    <th class="text-left px-4 py-2 border">Fecha de Pedido</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($pedidos as $pedido)
+    <div class="overflow-x-auto">
+        <div class="overflow-y-auto max-h-[400px]">
+            <table class="min-w-full divide-y divide-gray-200 text-sm">
+                <thead class="bg-gray-50">
                     <tr>
-                        <td class="px-4 py-2 border">{{ $pedido->id }}</td>
-
-                        <td class="px-4 py-2 border">
-                            {{ $pedido->mesa->id ?? 'Sin mesa' }}
-                        </td>
-
-                        <td class="px-4 py-2 border">
-                            @if ($pedido->reserva)
-                                {{ $pedido->reserva->cliente->nombre ?? 'Cliente' }}<br>
-                                {{ $pedido->reserva->fecha }} {{ $pedido->reserva->hora }}
-                            @else
-                                Sin reserva
-                            @endif
-                        </td>
-
-                        <td class="px-4 py-2 border">
-                            <ul>
-                                @foreach ($pedido->productos as $producto)
-                                    <li>
-                                        {{ $producto->nombre }} × {{ $producto->pivot->cantidad }}
-                                        ({{ number_format($producto->pivot->precio, 2) }} € c/u)
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </td>
-
-                        <td class="px-4 py-2 border">
-                            {{ $pedido->created_at->format('d/m/Y H:i') }}
-                        </td>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Pedido</th>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Cliente (Reserva)</th>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Mesa</th>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Hora Reserva</th>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Precio Total (€)</th>
+                        <th class="sticky top-0 bg-gray-50 px-4 py-2 text-left font-semibold text-gray-600">Acciones</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>No hay pedidos registrados.</p>
-    @endif
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    @foreach ($pedidos as $pedido)
+                        @php
+                            $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
+                            $totalExtras = $pedido->pedidoProductos->flatMap(function ($unidad) {
+                                return $unidad->extras->map(function ($extra) {
+                                    return $extra->precio * $extra->pivot->cantidad;
+                                });
+                            })->sum();
+
+                            $precioTotal = $totalProductos + $totalExtras;
+                        @endphp
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-2">{{ $pedido->id }}</td>
+                            <td class="px-4 py-2">{{ $pedido->reserva->cliente->nombre ?? $pedido->reserva->nombre ?? '-' }}</td>
+                            <td class="px-4 py-2">{{ $pedido->mesa->id ?? '-' }}</td>
+                            <td class="px-4 py-2">{{ $pedido->reserva->hora ?? '-' }}</td>
+                            <td class="px-4 py-2 font-semibold">{{ number_format($precioTotal, 2) }} €</td>
+                            <td class="px-4 py-2 space-x-2">
+                                <a href="{{ route('admin.pedidos.show', $pedido) }}"
+                                    class="inline-block px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded transition font-medium">
+                                    Ver
+                                </a>
+                                <a href="{{ route('admin.pedidos.edit', $pedido) }}"
+                                    class="inline-block px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition font-medium">
+                                    Editar
+                                </a>
+                                <form action="{{ route('admin.pedidos.destroy', $pedido->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('¿Estás seguro de que quieres eliminar este pedido?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded transition font-medium">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 @endsection

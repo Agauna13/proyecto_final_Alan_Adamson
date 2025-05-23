@@ -1,7 +1,7 @@
 @extends('frontend.layout')
 
 @section('content')
-<form method="GET" action="{{ route('pedidos.create') }}" class="flex flex-col gap-6 bg-black px-5 text-white">
+<form method="POST" action="{{ route('pedidos.redirectToPedido') }}" class="flex flex-col gap-6 bg-black px-5 text-white">
     @csrf
     @foreach ($productos->groupBy('grupo') as $grupo => $productosPorGrupo)
         <h2 class="mx-40 text-[32px]">{{ ucfirst($grupo) }}</h2>
