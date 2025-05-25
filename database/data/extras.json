@@ -42,6 +42,26 @@
     {
         "nombre": "Bacon y queso",
         "precio": "1.00"
+    },
+    {
+        "nombre": "Coca-cola",
+        "precio": "0.00"
+    },
+    {
+        "nombre": "Sprite",
+        "precio": "0.00"
+    },
+    {
+        "nombre": "Fanta limón",
+        "precio": "0.00"
+    },
+    {
+        "nombre": "Fanta naranja",
+        "precio": "0.00"
+    },
+    {
+        "nombre": "Tónica",
+        "precio": "0.00"
     }
 
 ]

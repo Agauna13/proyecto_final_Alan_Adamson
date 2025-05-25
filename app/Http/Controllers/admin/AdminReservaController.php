@@ -68,8 +68,6 @@ class AdminReservaController extends Controller
                     ->with('error', 'No hay suficiente espacio disponible en ' . $request->sala_terraza . ' para esa hora.');
             }
 
-            $capacidadDisponible = $capacidad[$request->sala_terraza] - $reservasExistentes;
-
             $cliente = Cliente::create([
                 'nombre' => $request->nombre,
                 'telefono' => $request->telefono,

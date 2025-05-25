@@ -1,17 +1,5 @@
 [
     {
-        "producto_id": "25",
-        "extra_id": "1"
-    },
-    {
-        "producto_id": "26",
-        "extra_id": "1"
-    },
-    {
-        "producto_id": "27",
-        "extra_id": "1"
-    },
-    {
         "producto_id": "28",
         "extra_id": "1"
     },
@@ -218,5 +206,45 @@
     {
         "producto_id": "43",
         "extra_id": "11"
+    },
+    {
+        "producto_id": "28",
+        "extra_id": "12"
+    },
+    {
+        "producto_id": "28",
+        "extra_id": "13"
+    },
+    {
+        "producto_id": "28",
+        "extra_id": "14"
+    },
+    {
+        "producto_id": "28",
+        "extra_id": "15"
+    },
+    {
+        "producto_id": "28",
+        "extra_id": "16"
+    },
+    {
+        "producto_id": "29",
+        "extra_id": "12"
+    },
+    {
+        "producto_id": "29",
+        "extra_id": "13"
+    },
+    {
+        "producto_id": "29",
+        "extra_id": "14"
+    },
+    {
+        "producto_id": "29",
+        "extra_id": "15"
+    },
+    {
+        "producto_id": "29",
+        "extra_id": "16"
     }
 ]

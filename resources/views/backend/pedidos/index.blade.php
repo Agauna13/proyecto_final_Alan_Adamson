@@ -4,10 +4,7 @@
 <div class="p-4 sm:p-6 bg-white rounded-xl shadow-md max-w-7xl mx-auto">
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 mb-4">
         <h1 class="text-2xl sm:text-3xl font-extrabold text-blue-700 tracking-wide">Listado de Pedidos</h1>
-        <a href="{{ route('admin.pedidos.create') }}"
-            class="px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded hover:bg-blue-700 transition font-semibold shadow">
-            Nuevo Pedido
-        </a>
+
     </div>
 
     <div class="overflow-x-auto rounded shadow ring-1 ring-gray-200">
@@ -18,6 +15,7 @@
                     <th class="px-4 py-2 text-left font-semibold">Cliente (Reserva)</th>
                     <th class="px-4 py-2 text-left font-semibold">Mesa</th>
                     <th class="px-4 py-2 text-left font-semibold">Hora Reserva</th>
+                    <th class="px-4 py-2 text-left font-semibold">Hora Pedido</th>
                     <th class="px-4 py-2 text-left font-semibold">Precio Total (€)</th>
                     <th class="px-4 py-2 text-left font-semibold">Estado</th>
                     <th class="px-4 py-2 text-left font-semibold">Acciones</th>
@@ -39,6 +37,7 @@
                         <td class="px-4 py-2">{{ $pedido->reserva->cliente->nombre ?? $pedido->reserva->nombre ?? '-' }}</td>
                         <td class="px-4 py-2">{{ $pedido->mesa->id ?? '-' }}</td>
                         <td class="px-4 py-2">{{ $pedido->reserva->hora ?? '-' }}</td>
+                        <td class="px-4 py-2">{{ $pedido->created_at ?? '-' }}</td>
                         <td class="px-4 py-2 font-semibold">{{ number_format($precioTotal, 2) }} €</td>
                         <td class="px-4 py-2 font-semibold">{{ $pedido->estado }}</td>
                         <td class="px-4 py-2 flex flex-wrap gap-1">
