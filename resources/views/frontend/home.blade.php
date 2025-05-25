@@ -1,1 +1,5 @@
-<h1>Holaaaaaaaaaaaa</h1>
+@extends('frontend.layout')
+
+@section('content')
+
+@endsection

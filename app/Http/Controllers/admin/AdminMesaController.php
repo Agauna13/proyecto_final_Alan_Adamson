@@ -14,8 +14,13 @@ class AdminMesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::with('pedidos')->get();
-        return view('backend.mesas.index', compact('mesas'));
+        $mesas_sala = Mesa::where('sala_terraza', 'sala')
+            ->with('pedidos')
+            ->get();
+        $mesas_terraza = Mesa::where('sala_terraza', 'terraza')
+            ->with('pedidos')
+            ->get();
+        return view('backend.mesas.index', compact('mesas_sala', 'mesas_terraza'));
     }
 
     /**
@@ -37,10 +42,35 @@ class AdminMesaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Mesa $mesa)
     {
-        //
+        // Pedidos pendientes
+        $pendientes = $mesa->pedidos()
+            ->where('estado', 'pendiente')
+            ->orderBy('created_at', 'desc')
+            ->with([
+                'pedidoProductos.producto',
+                'pedidoProductos.extras',
+                'reserva.cliente'
+            ])
+            ->get();
+
+        // Pedidos servidos (incluso soft deleted si quieres mostrar histórico)
+        $historico = Pedido::withTrashed()
+            ->where('mesa_id', $mesa->id)
+            ->whereIn('estado', ['servido', 'cancelado'])
+            ->orderBy('created_at', 'desc')
+            ->with([
+                'pedidoProductos.producto',
+                'pedidoProductos.extras',
+                'reserva.cliente'
+            ])
+            ->get();
+
+        return view('backend.mesas.show', compact('mesa', 'pendientes', 'historico'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -76,23 +106,49 @@ class AdminMesaController extends Controller
         return redirect()->back()->with('success', 'Mesa liberada correctamente.');
     }
 
+
+    public function ocuparMesa(Mesa $mesa)
+    {
+        $mesa->estado = 'ocupada';
+        $mesa->save();
+
+        return redirect()->back()->with('success', 'Mesa marcada como ocupada.');
+    }
+
+
+
     public function mesasOcupadas()
     {
 
-        $mesas = Mesa::whereHas('pedidos', function ($query) {
-            $query->where('estado', 'pendiente');
-        })
+        $mesas_sala = Mesa::where('estado', 'ocupada')
+            ->where('sala_terraza', 'sala')
+            ->with('pedidos')
             ->get();
 
-        // Luego para cada mesa cargas pedidos pendientes explícitamente:
-        foreach ($mesas as $mesa) {
-            $mesa->pedidos_pendientes = Pedido::where('mesa_id', $mesa->id)
-                ->where('estado', 'pendiente')
-                ->orderBy('created_at')
-                ->get();
+        $mesas_terraza = Mesa::where('estado', 'ocupada')
+            ->where('sala_terraza', 'terraza')
+            ->with('pedidos')
+            ->get();
+
+
+        return view('backend.mesas.index', compact('mesas_sala', 'mesas_terraza'));
+    }
+
+    public function salaTerraza(string $sala_terraza)
+    {
+        $mesas = Mesa::where('sala_terraza', $sala_terraza)
+            ->where('estado', 'ocupada')
+            ->with('pedidos')
+            ->get();
+
+        if ($sala_terraza === 'sala') {
+            $mesas_sala = $mesas;
+            $mesas_terraza = collect();
+        } else {
+            $mesas_terraza = $mesas;
+            $mesas_sala = collect();
         }
 
-
-        return view('backend.mesas.index', compact('mesas'));
+        return view('backend.mesas.index', compact('mesas_sala', 'mesas_terraza'));
     }
 }

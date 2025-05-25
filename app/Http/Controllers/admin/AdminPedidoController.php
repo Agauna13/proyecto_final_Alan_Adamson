@@ -48,7 +48,8 @@ class AdminPedidoController extends Controller
         $pedido->load(
             'pedidoProductos.producto',
             'pedidoProductos.extras',
-            'reserva.cliente'
+            'reserva.cliente',
+            'mesa'
         );
 
         $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
@@ -92,5 +93,13 @@ class AdminPedidoController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function cambiarEstadoPedido(Pedido $pedido, string $estado)
+    {
+        $pedidoId = $pedido->id;
+        $pedido->estado = $estado;
+        $pedido->save();
+        return redirect()->back()->with('success', "Pedido nº $pedidoId Cancelado Correctamente");
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MesaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ReservaController;
@@ -16,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/pedidos/{pedido}/confirmacion', [PedidoController::class, 'confirmacion'])->name('pedidos.confirmacion');
-Route::post('/pedidos/redireccion-pedido', [PedidoController::class, 'redirectToPedido'])->name('pedidos.redirectToPedido');
 
+Route::match(['get', 'post'], '/pedidos/redireccion-pedido', [PedidoController::class, 'redirectToPedido'])
+    ->name('pedidos.redirectToPedido');
+
+Route::get('/pedidos/{pedido}/confirmacion', [PedidoController::class, 'confirmacion'])->name('pedidos.confirmacion');
 
 Route::get('/', [ProductoController::class, 'index'])->name('home');
+
+Route::get('/mesa/{hash}', [MesaController::class, 'redirectToCartaWithMesa']);
 
 Route::resource('productos', ProductoController::class);
 Route::resource('pedidos', PedidoController::class);

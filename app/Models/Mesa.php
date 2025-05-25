@@ -13,4 +13,14 @@ class Mesa extends Model
     {
         return $this->hasMany(Pedido::class);
     }
+
+    public function pedidosPendientes()
+    {
+        return $this->hasMany(Pedido::class)->where('estado', 'pendiente');
+    }
+
+    public function pedidosServidos()
+    {
+        return $this->hasMany(Pedido::class)->where('estado', 'servido');
+    }
 }

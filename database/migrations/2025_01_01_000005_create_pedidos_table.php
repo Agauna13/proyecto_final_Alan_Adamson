@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mesa_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('reserva_id')->nullable()->constrained()->onDelete('cascade');
-            $table->enum('estado', ['pendiente', 'confirmado', 'servido'])->default('pendiente');
+            $table->enum('estado', ['pendiente', 'confirmado', 'servido', 'cancelado'])->default('pendiente');
             $table->timestamps();
             $table->softDeletes();
         });

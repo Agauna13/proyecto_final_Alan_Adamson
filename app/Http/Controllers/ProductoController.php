@@ -13,14 +13,16 @@ class ProductoController extends Controller
      */
     public function index(int $reservaId = null, int $mesaId = null)
     {
-        if(!$reservaId && !$mesaId){
-            $productos = Producto::with('extras')->get();
-            return view('frontend.carta.carta', compact('productos'));
-        }
-        if($reservaId || $mesaId){
-            $productos = Producto::with('extras')->get();
+        $productos = Producto::with('extras')->get();
+
+        // Si hay mesa o reserva, mostramos la cartaPedidos.
+        if ($reservaId || $mesaId) {
             return view('frontend.carta.cartaPedidos', compact('productos'));
         }
+
+        // ⚠️ Esto puede crear redirección infinita si home vuelve a redirigir a redirectToCartaWithMesa.
+        // ¡Mejor muestra la carta general sin mesa directamente!
+        return view('frontend.carta.carta', compact('productos'));
     }
 
     /**
@@ -70,5 +72,4 @@ class ProductoController extends Controller
     {
         //
     }
-
 }

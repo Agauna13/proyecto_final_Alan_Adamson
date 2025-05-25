@@ -48,22 +48,30 @@ class PedidoController extends Controller
 
         try {
 
-            $reserva = Reserva::create(session('reserva_temporal'));
+            if(session('reserva_temporal')){
+                $reserva = Reserva::create(session('reserva_temporal'));
+                $reservaId = $reserva->id;
 
-            $reservaId = $reserva->id;
+            }
+
             $mesaId = session('mesa_id');
 
+            if($mesaId){
+                $mesa = Mesa::find($mesaId);
+                $mesa->estado = 'ocupada';
+                $mesa->save();
+            }
+
             $pedido = Pedido::create([
-                'reserva_id' => $reservaId,
+                'reserva_id' => $reservaId ?? null,
                 'mesa_id' => $mesaId,
             ]);
 
-            $this->insertData($productosRequest, $pedido); //método para modularizar el insertData
+            $this->insertData($productosRequest, $pedido);
 
             DB::commit();
 
             session()->forget('reserva_temporal');
-            // Cargar relaciones
             return redirect()->route('pedidos.confirmacion', ['pedido' => $pedido->id]);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -74,8 +82,7 @@ class PedidoController extends Controller
     protected function insertData($productosRequest, $pedido)
     {
         foreach ($productosRequest as $productoData) {
-            // Registrar cada unidad por separado para gestionar extras únicos por unidad
-            $pedido->productos()->attach([//sin el attach, laravel une los productos del mismo id en uno solo creando confusión a la hora de mostrar los extras
+            $pedido->productos()->attach([
                 $productoData['producto_id'] => [
                     'precio_unitario' => $productoData['precio_unitario'],
                     'created_at' => now(),
@@ -106,45 +113,12 @@ class PedidoController extends Controller
         }
     }
 
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatePedidoRequest $request, Pedido $pedido)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pedido $pedido)
-    {
-        //
-    }
-
     /**
      * Once the order is confirmed with the extra
      */
     public function confirmacion(Pedido $pedido)
     {
-        $pedido->load('pedidoProductos.producto', 'pedidoProductos.extras');
+        $pedido->load('pedidoProductos.producto', 'pedidoProductos.extras', 'reserva.cliente');
 
         $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
 
@@ -178,7 +152,7 @@ class PedidoController extends Controller
                     $precioTotal += $producto->precio;
                     $replica = $producto->replicate();
                     $replica->id = $productoId;
-                    $productoUnidades->push($replica); // cada unidad individual
+                    $productoUnidades->push($replica);
                 }
             }
         }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mesa_hash')->unique();
             $table->enum('estado', ['libre', 'ocupada']);
+            $table->enum('sala_terraza', ['sala', 'terraza']);
             $table->timestamps();
         });
     }

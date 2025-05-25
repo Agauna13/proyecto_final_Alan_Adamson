@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 
 class AdminClienteController extends Controller
 {
@@ -12,7 +13,9 @@ class AdminClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::with('reservas')->get();
+
+        return view('backend.clientes.index', compact('clientes'));
     }
 
     /**
