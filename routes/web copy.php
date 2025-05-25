@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MesaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
@@ -17,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::match(['get', 'post'], '/pedidos/redireccion-pedido', [PedidoController::class, 'redirectToPedido'])
     ->name('pedidos.redirectToPedido');
 
@@ -29,7 +30,3 @@ Route::get('/mesa/{hash}', [MesaController::class, 'redirectToCartaWithMesa']);
 Route::resource('productos', ProductoController::class);
 Route::resource('pedidos', PedidoController::class);
 Route::resource('reservas', ReservaController::class);
-
-
-
-require __DIR__.'/auth.php';

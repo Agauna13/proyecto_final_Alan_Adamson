@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.accordion-header {
+/*.accordion-header {
     @apply cursor-pointer flex items-center justify-between py-3 px-4 bg-gray-800/50 rounded border border-gray-700 hover:bg-gray-800 transition;
 }
 
@@ -20,7 +20,7 @@
 
 .accordion-content.active {
     @apply max-h-[1000px] opacity-100;
-}
+}*/
 
 
 #bodyFront {

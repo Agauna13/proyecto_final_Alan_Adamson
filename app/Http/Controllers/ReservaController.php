@@ -25,10 +25,9 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar disponibilidad
         $disponibilidad = $this->comprobarDisponibilidad($request);
         if ($disponibilidad instanceof \Illuminate\Http\RedirectResponse) {
-            return $disponibilidad; // Redirigir si hay error
+            return $disponibilidad;
         }
 
         if ($request->action === 'pedido') {

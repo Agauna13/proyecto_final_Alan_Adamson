@@ -37,7 +37,11 @@ class AdminReservaController extends Controller
     {
         return view('backend.reservas.create');
     }
-
+    /*App\Models\User::create([
+    'name' => 'Alan',
+    'email' => 'Alanmg.77.90@gmail.com',
+    'password' => Hash::make('Mariano@7790'),
+]);*/
     /**
      * Store a newly created resource in storage.
      */
