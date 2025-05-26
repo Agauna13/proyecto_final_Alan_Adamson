@@ -1,20 +1,20 @@
 <header
-    class="flex justify-between items-center bg-gradient-to-r from-black via-gray-900 to-black text-white px-10 py-6 shadow-2xl sticky top-0 z-50 border-b-2 border-yellow-500/70 backdrop-blur-sm animate-slideInFromTop">
-    <a href="{{route('home')}}"
-        class="text-4xl font-black text-yellow-400 tracking-wide hover:scale-110 transition-transform duration-300 animate-slideInFromLeft">
+    class="flex flex-wrap justify-between items-center bg-black text-white px-6 py-4 sticky top-0 z-50 border-b border-red-700/70 backdrop-blur-sm animate-slideInFromTop">
+
+    <a href="{{ route('home') }}"
+        class="text-3xl sm:text-4xl font-black tracking-wide hover:scale-110 transition-transform duration-300 animate-slideInFromLeft mb-2 sm:mb-0">
         Mokitrokis
     </a>
 
-    <nav class="flex items-center gap-8 animate-slideInFromRight">
+    <nav class="flex flex-wrap gap-4 sm:gap-6 items-center">
         <a href="{{ route('reservas.create') }}"
-            class="uppercase font-bold tracking-wide text-black bg-yellow-400 rounded-md px-5 py-2 hover:bg-yellow-500 hover:scale-[0.95] transition transform duration-300 shadow-md">
+            class="uppercase font-semibold tracking-wide text-white bg-red-700 rounded-md px-4 py-2 hover:bg-red-600 hover:scale-95 transition-transform duration-200 whitespace-nowrap">
             Reserva
         </a>
 
         <a href="{{ route('productos.index') }}"
-            class="uppercase font-bold tracking-wide text-gray-200 bg-gray-700 rounded-md px-5 py-2 hover:bg-gray-600 hover:scale-[0.95] transition transform duration-300 shadow-md">
+            class="uppercase font-semibold tracking-wide text-white bg-gray-800 rounded-md px-4 py-2 hover:bg-gray-700 hover:scale-95 transition-transform duration-200 whitespace-nowrap">
             Carta
         </a>
-
     </nav>
 </header>

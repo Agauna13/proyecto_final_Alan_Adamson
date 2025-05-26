@@ -22,7 +22,8 @@ Route::match(['get', 'post'], '/pedidos/redireccion-pedido', [PedidoController::
 
 Route::get('/pedidos/{pedido}/confirmacion', [PedidoController::class, 'confirmacion'])->name('pedidos.confirmacion');
 
-Route::get('/', [ProductoController::class, 'index'])->name('home');
+Route::get('/carta', [ProductoController::class, 'index'])->name('carta');
+Route::get('/', fn() =>  view('frontend.home'))->name('home');
 
 Route::get('/mesa/{hash}', [MesaController::class, 'redirectToCartaWithMesa']);
 
