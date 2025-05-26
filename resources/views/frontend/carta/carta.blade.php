@@ -39,52 +39,55 @@
 
     @foreach ($productos->groupBy('grupo') as $grupo => $productosPorGrupo)
         <h2
-            class="text-4xl font-extrabold text-center text-red-600 uppercase tracking-wider mb-10 drop-shadow-lg animate-pulse">
+            class="desplegable cursor-pointer text-4xl font-extrabold text-center text-red-600 uppercase tracking-wider mb-10 drop-shadow-lg animate-pulse">
             {{ ucfirst($grupo) }}
         </h2>
 
-        @foreach ($productosPorGrupo->groupBy('categoria') as $categoria => $productosPorCategoria)
-            <div class="my-12">
+        <div class="grupo-contenido hidden">
+            @foreach ($productosPorGrupo->groupBy('categoria') as $categoria => $productosPorCategoria)
                 <h3
-                    class="text-2xl font-semibold border-b-2 border-red-600 pb-3 mb-6 uppercase tracking-wide flex items-center gap-2 text-gray-200">
+                    class="desplegable cursor-pointer text-2xl font-semibold border-b-2 border-red-600 pb-3 mb-6 uppercase tracking-wide flex items-center gap-2 text-gray-200">
                     <span class="inline-block w-3 h-3 bg-red-600 rounded-full motion-safe:animate-bounce"></span>
                     {{ ucfirst($categoria) }}
                 </h3>
 
-                <div id="{{ $productosPorCategoria->first()->css_id }}"
-                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    @foreach ($productosPorCategoria as $producto)
-                        <div
-                            class="bg-gray-900/70 hover:bg-gray-900/90 border border-red-600/40 rounded-xl p-6 flex flex-col justify-between shadow-lg hover:shadow-red-600/40 transition duration-300 transform hover:-translate-y-1">
-                            <p class="font-semibold text-lg tracking-wide text-gray-100">{{ $producto->nombre }}</p>
-                            <p class="text-red-500 font-extrabold text-right text-xl">{{ $producto->precio }}€</p>
-                        </div>
-                    @endforeach
-                </div>
-
-                @if ($productosPorCategoria->pluck('extras')->flatten()->isNotEmpty())
-                    <div
-                        class="mt-6 pl-4 border-l-4 border-red-600 bg-gray-900/60 rounded shadow-inner animate-fade-in">
-                        <h4 class="text-red-600 font-semibold mb-3 uppercase tracking-wide flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-500" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path d="M12 2L15 8l6 1-4.5 4.4 1 6L12 16l-5.5 3 1-6L4 9l6-1z" />
-                            </svg>
-                            Extras
-                        </h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            @foreach ($productosPorCategoria->pluck('extras')->flatten()->unique('id') as $extra)
-                                <div
-                                    class="flex justify-between items-center text-sm text-gray-300 bg-gray-800/70 rounded p-2 border border-red-600/20 shadow-sm">
-                                    <p>{{ $extra->nombre }}</p>
-                                    <p class="text-red-500 font-bold">{{ $extra->precio }}€</p>
-                                </div>
-                            @endforeach
-                        </div>
+                <div class="categoria-contenido hidden my-12">
+                    <div id="{{ $productosPorCategoria->first()->css_id }}"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        @foreach ($productosPorCategoria as $producto)
+                            <div
+                                class="bg-gray-900/70 hover:bg-gray-900/90 border border-red-600/40 rounded-xl p-6 flex flex-col justify-between shadow-lg hover:shadow-red-600/40 transition duration-300 transform hover:-translate-y-1">
+                                <p class="font-semibold text-lg tracking-wide text-gray-100">{{ $producto->nombre }}</p>
+                                <p class="text-white font-extrabold text-right text-xl">{{ $producto->precio }}€</p>
+                            </div>
+                        @endforeach
                     </div>
-                @endif
-            </div>
-        @endforeach
+
+                    @if ($productosPorCategoria->pluck('extras')->flatten()->isNotEmpty())
+                        <div
+                            class="mt-6 pl-4 border-l-4 border-red-600 bg-gray-900/60 rounded shadow-inner animate-fade-in">
+                            <h4
+                                class="desplegable cursor-pointer text-white font-semibold mb-3 py-3 uppercase tracking-wide flex items-center gap-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-500" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M12 2L15 8l6 1-4.5 4.4 1 6L12 16l-5.5 3 1-6L4 9l6-1z" />
+                                </svg>
+                                Extras
+                            </h4>
+                            <div class="extras-contenido hidden grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                @foreach ($productosPorCategoria->pluck('extras')->flatten()->unique('id') as $extra)
+                                    <div
+                                        class="flex justify-between items-center text-sm text-gray-300 bg-gray-800/70 rounded p-2 border border-red-600/20 shadow-sm">
+                                        <p>{{ $extra->nombre }}</p>
+                                        <p class="text-red-500 font-bold">{{ $extra->precio }}€</p>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            @endforeach
+        </div>
     @endforeach
 
     <!-- Separador final decorativo -->
@@ -93,3 +96,4 @@
     </div>
 </section>
 @endsection
+
