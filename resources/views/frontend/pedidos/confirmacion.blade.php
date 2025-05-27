@@ -26,7 +26,6 @@
     <form action="{{ route('pedidos.store') }}" method="POST" class="max-w-3xl mx-auto space-y-8 animate-fade-in pb-28" id="pedidoForm">
         @csrf
 
-        <!-- Productos seleccionados -->
         <div>
             <h3 class="text-2xl font-semibold mb-4">Productos seleccionados</h3>
             @foreach ($productosUnicos as $index => $producto)

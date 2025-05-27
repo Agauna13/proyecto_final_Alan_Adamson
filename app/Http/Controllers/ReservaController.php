@@ -53,15 +53,16 @@ class ReservaController extends Controller
                 'email' => $request->email ?? "Email no proporcionado"
             ]);
 
-            Reserva::create([
+            $reserva = Reserva::create([
                 'pax' => $request->pax,
                 'fecha' => $request->fecha,
                 'hora' => $request->hora,
                 'sala_terraza' => $request->sala_terraza,
+                'comentarios' => $request->comentarios,
                 'cliente_id' => $cliente->id
             ]);
 
-            return redirect()->back()->with('success', "Reserva Creada Correctamente");
+            return view('frontend.reservas.confirmacion', compact('cliente', 'reserva'));
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', 'Error al crear la reserva.');
         }
@@ -83,6 +84,23 @@ class ReservaController extends Controller
             return redirect()->back()
                 ->withInput()
                 ->with('error', "La reserva debe realizarse al menos con 1 hora de antelación. $fechaHoraReserva");
+        }
+
+
+        /* Comprobamos que no haya 2 reservas a la misma hora con los mismos
+        datos de cliente para evitar reservas duplicadas */
+
+        $reservaExistente = Reserva::where('fecha', $fecha)
+            ->where('hora', $request->hora)
+            ->whereHas('cliente', function ($query) use ($request) {
+                $query->where('nombre', $request->nombre)
+                    ->where('telefono', $request->telefono)
+                    ->where('email', $request->email);
+            })->first();
+
+        if ($reservaExistente) {
+            // 👇 Redirigir a la home sin duplicar y sin mensajes
+            return redirect()->route('home');
         }
 
         // Verificar aforo disponible

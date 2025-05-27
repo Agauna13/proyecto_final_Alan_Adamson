@@ -189,70 +189,70 @@
         "css_id": "licores"
     },
     {
-        "nombre": "Cubata",
+        "nombre": "Combinado",
         "categoria": "Licores",
         "precio": "6.50",
         "grupo": "bebida",
         "css_id": "licores"
     },
     {
-        "nombre": "Cubata especial",
+        "nombre": "Combinado con licor de Primeras Marcas",
         "categoria": "Licores",
         "precio": "8.50",
         "grupo": "bebida",
         "css_id": "licores"
     },
     {
-        "nombre": "Tomate",
+        "nombre": "Tostadas con Tomate",
         "categoria": "Tostadas",
         "precio": "1.70",
         "grupo": "comida",
         "css_id": "tostadas"
     },
     {
-        "nombre": "Pan moreno y tomate",
+        "nombre": "Tostadas de Pan moreno y tomate",
         "categoria": "Tostadas",
         "precio": "1.90",
         "grupo": "comida",
         "css_id": "tostadas"
     },
     {
-        "nombre": "Mantequilla y mermelada",
+        "nombre": "Tostadas con Mantequilla y mermelada",
         "categoria": "Tostadas",
         "precio": "1.70",
         "grupo": "comida",
         "css_id": "tostadas"
     },
     {
-        "nombre": "Pan moreno y aguacate",
+        "nombre": "Tostadas con Pan moreno y aguacate",
         "categoria": "Tostadas",
         "precio": "3.80",
         "grupo": "comida",
         "css_id": "tostadas"
     },
     {
-        "nombre": "1 Ingrediente",
+        "nombre": "Bocadillo con 1 Ingrediente",
         "categoria": "Bocadillos",
         "precio": "4.00",
         "grupo": "comida",
         "css_id": "bocadillos"
     },
     {
-        "nombre": "2 Ingredientes",
+        "nombre": "Bocadillo con 2 Ingredientes",
         "categoria": "Bocadillos",
         "precio": "4.80",
         "grupo": "comida",
         "css_id": "bocadillos"
     },
     {
-        "nombre": "Tortilla Francesa",
+        "nombre": "Bocadillo de Tortilla Francesa",
         "categoria": "Bocadillos",
         "precio": "5.00",
         "grupo": "comida",
         "css_id": "bocadillos"
     },
     {
-        "nombre": "Bacon y queso",
+        "nombre": "Bocadillo de Bacon y queso",
         "categoria": "Bocadillos",
         "precio": "5.50",
         "grupo": "comida",
@@ -477,63 +477,63 @@
         "css_id": "hamburguesasEspeciales"
     },
     {
-        "nombre": "Mixto (Con serrano y queso)",
+        "nombre": "Pa amb oli Mixto (Con serrano y queso)",
         "categoria": "Pam amb oli",
         "precio": "10.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
-        "nombre": "Mallorquín (Con panceta, sobrasada y camaiot)",
+        "nombre": "Pa amb oli Mallorquín (Con panceta, sobrasada y camaiot)",
         "categoria": "Pam amb oli",
         "precio": "13.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
-        "nombre": "Cabrero con lomo y queso de cabra",
+        "nombre": "Pa amb oli Cabrero con lomo y queso de cabra",
         "categoria": "Pam amb oli",
         "precio": "13.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
-        "nombre": "Marinero con anchoas y atún",
+        "nombre": "Pa amb oli Marinero con anchoas y atún",
         "categoria": "Pam amb oli",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
-        "nombre": "Pollo rebozado o plancha con patatas (Con mozzarella, lechuga, tomate y salsa César)",
+        "nombre": "Fajita de Pollo rebozado o plancha con patatas (Con mozzarella, lechuga, tomate y salsa César)",
         "categoria": "Fajitas",
         "precio": "12.00",
         "grupo": "comida",
         "css_id": "fajitas"
     },
     {
-        "nombre": "Vegetal de atún (Con lechuga, tomate, huevo a la plancha y mayonesa)",
+        "nombre": "Fajita Vegetal de atún (Con lechuga, tomate, huevo a la plancha y mayonesa)",
         "categoria": "Fajitas",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "fajitas"
     },
     {
-        "nombre": "César (Lechuga, tomate, queso, pollo rebozado, picatostes y salsa César)",
+        "nombre": "Ensalada César (Lechuga, tomate, queso, pollo rebozado, picatostes y salsa César)",
         "categoria": "Ensaladas",
         "precio": "10.00",
         "grupo": "comida",
         "css_id": "ensaladas"
     },
     {
-        "nombre": "Cabra (Lechuga, tomate, cebolla crujiente, queso de cabra y nueces)",
+        "nombre": "Ensalada Cabra (Lechuga, tomate, cebolla crujiente, queso de cabra y nueces)",
         "categoria": "Ensaladas",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "ensaladas"
     },
     {
-        "nombre": "Mixta (Lechuga, tomate, York, queso, atún y cebolla cruda)",
+        "nombre": "Ensalada Mixta (Lechuga, tomate, York, queso, atún y cebolla cruda)",
         "categoria": "Ensaladas",
         "precio": "9.00",
         "grupo": "comida",
@@ -554,28 +554,28 @@
         "css_id": "veganos"
     },
     {
-        "nombre": "Fajita (Berenjena, cebolla pochada, pimiento rojo y verde asado acompañado de patatas teja)",
+        "nombre": "Fajita Vegana (Berenjena, cebolla pochada, pimiento rojo y verde asado acompañado de patatas teja)",
         "categoria": "Nuestros Veganos",
         "precio": "12.00",
         "grupo": "comida",
         "css_id": "veganos"
     },
     {
-        "nombre": "Elige tu hamburguesa entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "nombre": "Hamburguesa entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
         "categoria": "Menus Mokitrokis",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "menusMokitrokis"
     },
     {
-        "nombre": "Elige tu pepito Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "nombre": "Pepito Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
         "categoria": "Menus Mokitrokis",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "menusMokitrokis"
     },
     {
-        "nombre": "Elige tus dos perritos entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
+        "nombre": "Dos perritos entre Mokitrokis o Tradicional Dimonis con patatas teja y bebida de lata",
         "categoria": "Menus Mokitrokis",
         "precio": "11.00",
         "grupo": "comida",
@@ -603,70 +603,70 @@
         "css_id": "platosCombinados"
     },
     {
-        "nombre": "Margarita (Tomate y mozzarella)",
+        "nombre": "Pizza Margarita (Tomate y mozzarella)",
         "categoria": "Pizzas",
         "precio": "9.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Prosciuto (Tomate, York y mozzarella)",
+        "nombre": "Pizza Prosciuto (Tomate, York y mozzarella)",
         "categoria": "Pizzas",
         "precio": "9.50",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "4 Quesos (Mozzarella, edam, cheddar y roquefort)",
+        "nombre": "Pizza 4 Quesos (Mozzarella, edam, cheddar y roquefort)",
         "categoria": "Pizzas",
         "precio": "9.50",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Romana (Mozzarella, champiñones, pimiento, bacon y pollo)",
+        "nombre": "Pizza Romana (Mozzarella, champiñones, pimiento, bacon y pollo)",
         "categoria": "Pizzas",
         "precio": "10.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Vegetariana (Mozzarella, espinacas, cebolla y queso de cabra)",
+        "nombre": "Pizza Vegetariana (Mozzarella, espinacas, cebolla y queso de cabra)",
         "categoria": "Pizzas",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Cabra (Mozarella, sobrasada, queso de cabra y miel)",
+        "nombre": "Pizza Cabra (Mozarella, sobrasada, queso de cabra y miel)",
         "categoria": "Pizzas",
         "precio": "12.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Barbacoa (Mozzarella, carne picada, bacon y salsa barbacoa)",
+        "nombre": "Pizza Barbacoa (Mozzarella, carne picada, bacon y salsa barbacoa)",
         "categoria": "Pizzas",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Carbonara (Mozzarella, bacon, champiñones, cebolla y nata)",
+        "nombre": "Pizza Carbonara (Mozzarella, bacon, champiñones, cebolla y nata)",
         "categoria": "Pizzas",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Tradicional Dimonis (Mozzarella, carne picada, pimiento y Salsa Dimonis)",
+        "nombre": "Pizza Tradicional Dimonis (Mozzarella, carne picada, pimiento y Salsa Dimonis)",
         "categoria": "Pizzas",
         "precio": "10.00",
         "grupo": "comida",
         "css_id": "pizzas"
     },
     {
-        "nombre": "Mokitrokis (Mozzarella, camaiot, lomo y roquefort)",
+        "nombre": "Pizza Mokitrokis (Mozzarella, camaiot, lomo y roquefort)",
         "categoria": "Pizzas",
         "precio": "13.00",
         "grupo": "comida",

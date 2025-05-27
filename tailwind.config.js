@@ -8,6 +8,9 @@ export default {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                bernier: ['Bernier', 'sans-serif'],
+            },
             keyframes: {
                 slideInFromLeft: {
                     '0%': {

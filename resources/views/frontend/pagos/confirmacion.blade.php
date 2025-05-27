@@ -7,10 +7,12 @@
         <h1 class="text-3xl sm:text-4xl font-bold mb-3 animate-pulse text-white">
             Resumen de tu Pedido
         </h1>
-        @if ($pedido->reserva && $pedido->reserva->isNotEmpty())
+        @if ($pedido->reserva)
             <p class="text-gray-300 text-lg sm:text-xl">Gracias por tu reserva {{ $pedido->reserva->cliente->nombre }}</p>
             <p class="text-gray-300 text-lg sm:text-xl">{{ $pedido->reserva->cliente->nombre }}</p>
             <p class="text-gray-300 text-lg sm:text-xl">Te esperamos el {{ $pedido->reserva->fecha }} a las {{ $pedido->reserva->hora }}h</p>
+            <p class="text-gray-300 text-lg sm:text-xl">Tu número de <strong>reserva</strong> es el #{{ $pedido->reserva->id }}</p>
+
         @else
             <p class="text-gray-300 text-lg sm:text-xl">Gracias por su pedido</p>
             <p class="text-gray-300 text-lg sm:text-xl">Su número identificador de pedido es el <strong class="text-red-600">#{{ $pedido->id }}</strong></p>

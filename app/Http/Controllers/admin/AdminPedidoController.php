@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use Carbon\Carbon;
 
 class AdminPedidoController extends Controller
 {
@@ -102,4 +103,43 @@ class AdminPedidoController extends Controller
         $pedido->save();
         return redirect()->back()->with('success', "Pedido nº $pedidoId Cancelado Correctamente");
     }
+
+    public function mostrarPedidosHoy()
+{
+    $hoy = Carbon::today();
+
+    $pedidos = Pedido::with(['productos', 'reserva'])
+        ->whereDate('created_at', $hoy)
+        ->orderBy('created_at', 'asc')
+        ->get()
+        ->map(function ($pedido) {
+            Carbon::setLocale('es');
+            $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
+            $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
+            return $pedido;
+        });
+
+    return view('backend.pedidos.index', compact('pedidos'));
+}
+
+public function mostrarPedidosSemana()
+{
+    $hoy = Carbon::today();
+    $fechaLimite = $hoy->copy()->addWeek();
+
+    $pedidos = Pedido::with(['productos', 'reserva'])
+        ->whereDate('created_at', '>=', $hoy)
+        ->whereDate('created_at', '<=', $fechaLimite)
+        ->orderBy('created_at', 'asc')
+        ->get()
+        ->map(function ($pedido) {
+            Carbon::setLocale('es');
+            $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
+            $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
+            return $pedido;
+        });
+
+    return view('backend.pedidos.index', compact('pedidos'));
+}
+
 }

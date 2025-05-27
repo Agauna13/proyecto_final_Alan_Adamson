@@ -4,21 +4,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     @vite('resources/css/app.css')
 </head>
 
 <body class="bg-black text-white">
-    {{-- Header --}}
     @include('frontend.partials.header')
 
-    {{-- HERO --}}
     <section class="min-h-[75vh] bg-black text-white pt-20 pb-24">
         <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
                 <div class="max-w-lg flex flex-col gap-10">
-                    <h2 id="hero_title" class="text-4xl font-semibold text-white">
+                    <h2 id="hero_title" class="font-bernier text-4xl font-semibold text-white">
                         Mokitrokis.
                     </h2>
 
@@ -49,10 +46,10 @@
     </section>
 
     {{-- COMIDAS / GALERÍA --}}
-    <section class="py-16 bg-black text-white">
+    <section class="py-16 bg-black text-white mb-12 sm:mb-6">
         <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
             <div class="mb-12 text-center max-w-2xl mx-auto">
-                <h2 class="text-4xl font-semibold text-red-700 mb-4">Mucho más que hamburguesas</h2>
+                <h2 class="font-bernier text-4xl font-semibold text-red-700 mb-4">Mucho más que hamburguesas</h2>
                 <p class="text-gray-300 text-lg leading-relaxed">
                     Mokitrokis es un restaurante de barrio donde la comida se disfruta con los tuyos.
                     Servimos hamburguesas, perritos, pepitos y pizzas caseras con un toque especial.
@@ -66,7 +63,7 @@
                     <img src="{{ asset('images/hamburguesa.jpg') }}" alt="Hamburguesas"
                         class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white">
+                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
                         Hamburguesas caseras
                     </div>
                 </div>
@@ -75,7 +72,7 @@
                     <img src="{{ asset('images/nachos4q.png') }}" alt="Nachos"
                         class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white">
+                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
                         Nachos
                     </div>
                 </div>
@@ -84,7 +81,7 @@
                     <img src="{{ asset('images/sandwich.jpeg') }}" alt="Sandwich"
                         class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white">
+                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
                         Sandwiches
                     </div>
                 </div>
@@ -93,7 +90,7 @@
                     <img src="{{ asset('images/pizza.png') }}" alt="Pizzas"
                         class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white">
+                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
                         Pizzas
                     </div>
                 </div>
@@ -110,7 +107,7 @@
                 </div>
 
                 <div class="max-w-lg">
-                    <h2 class="text-4xl font-semibold text-red-700">
+                    <h2 class="text-4xl font-semibold text-red-700 font-bernier">
                         ¡Estamos muy cerca de ti!
                     </h2>
                     <p class="mt-4 text-xl text-gray-200 leading-relaxed">

@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8 space-y-8">
+        <!-- Cliente -->
         <section class="border border-gray-300 rounded-lg p-6 bg-gray-50">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24"
@@ -27,7 +28,7 @@
             </dl>
         </section>
 
-        {{-- Datos de la Reserva --}}
+        <!-- Datos de la Reserva -->
         <section class="border border-gray-300 rounded-lg p-6 bg-gray-50">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24"
@@ -64,21 +65,32 @@
                     @endif
                 </div>
             </dl>
+
+            <!-- Comentario del cliente -->
+            <div class="mt-6 p-4 bg-gray-100 rounded-md border border-gray-300">
+                <dt class="font-semibold text-gray-800 mb-2">Comentario del cliente</dt>
+                @if ($reserva->comentarios)
+                    <dd class="text-gray-700">{{ $reserva->comentarios }}</dd>
+                @else
+                    <dd class="italic text-gray-400">Sin mensajes del cliente</dd>
+                @endif
+            </div>
         </section>
 
-        <section class="flex justify-end gap-4">
+        <!-- Acciones -->
+        <section class="flex flex-col sm:flex-row justify-end gap-4">
             <form action="{{ route('admin.reservas.destroy', $reserva->id) }}" method="POST"
                 onsubmit="return confirm('¿Estás seguro de que quieres borrar esta reserva?');">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
-                    class="px-5 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700 transition font-semibold">
+                    class="w-full sm:w-auto px-5 py-2 bg-red-600 text-white rounded shadow hover:bg-red-700 transition font-semibold">
                     Borrar Reserva
                 </button>
             </form>
 
             <a href="{{ route('admin.reservas.edit', $reserva) }}"
-                class="px-5 py-2 bg-gray-800 text-white rounded shadow hover:bg-gray-900 transition font-semibold">
+                class="w-full sm:w-auto px-5 py-2 bg-gray-800 text-white rounded shadow hover:bg-gray-900 transition font-semibold text-center">
                 Editar Reserva
             </a>
         </section>

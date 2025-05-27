@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::match(['get', 'post'], '/pedidos/redireccion-pedido', [PedidoController::class, 'redirectToPedido'])
+Route::match(['get', 'post'], '/pedidos/revisa-tu-pedido', [PedidoController::class, 'redirectToPedido'])
     ->name('pedidos.redirectToPedido');
 
 Route::get('/pedidos/{pedido}/confirmacion', [PedidoController::class, 'confirmacion'])->name('pedidos.confirmacion');

@@ -2,39 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/*.accordion-header {
-    @apply cursor-pointer flex items-center justify-between py-3 px-4 bg-gray-800/50 rounded border border-gray-700 hover:bg-gray-800 transition;
+
+@font-face {
+    font-family: 'Bernier';
+    src: url('/public/fonts/Bernier-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
-.accordion-header span {
-    @apply font-semibold text-gray-300 uppercase tracking-wider;
-}
-
-.accordion-header svg {
-    @apply w-4 h-4 text-red-500 transition-transform;
-}
-
-.accordion-content {
-    @apply overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0;
-}
-
-.accordion-content.active {
-    @apply max-h-[1000px] opacity-100;
-}*/
 
 
 #bodyFront {
     background-color: #000000;
-    /* negro puro o el que uses */
+    font-family: 'Bernier', sans-serif;
     color: white;
-    /* para que el texto predeterminado sea claro */
     min-height: 100vh;
     margin: 0;
     padding: 0;
 }
-
-
-/*#map{
-    z-index: -11 !important;
-}
-*/

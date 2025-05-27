@@ -37,11 +37,6 @@ class AdminReservaController extends Controller
     {
         return view('backend.reservas.create');
     }
-    /*App\Models\User::create([
-    'name' => 'Alan',
-    'email' => 'Alanmg.77.90@gmail.com',
-    'password' => Hash::make('Mariano@7790'),
-]);*/
     /**
      * Store a newly created resource in storage.
      */
@@ -137,5 +132,43 @@ class AdminReservaController extends Controller
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }
+    }
+
+    public function mostrarReservasHoy()
+    {
+        $reservas = Reserva::with(['pedidos', 'cliente'])
+            ->where('fecha', Carbon::today())
+            ->orderBy('fecha', 'asc')
+            ->orderBy('hora', 'asc')
+            ->get()
+            ->map(function ($reserva) {
+                Carbon::setLocale('es');
+                $reserva->fecha_formateada = Carbon::parse($reserva->fecha)->translatedFormat('l d-m-Y');
+                $reserva->hora_formateada = Carbon::parse($reserva->hora)->format('H:i');
+                return $reserva;
+            });
+
+        return view('backend.reservas.index', compact('reservas'));
+    }
+
+    public function mostrarReservasSemana()
+    {
+        $hoy = Carbon::today();
+        $fechaLimite = $hoy->copy()->addWeek();
+
+        $reservas = Reserva::with(['pedidos', 'cliente'])
+            ->whereDate('fecha', '>=', $hoy)
+            ->whereDate('fecha', '<=', $fechaLimite)
+            ->orderBy('fecha', 'asc')
+            ->orderBy('hora', 'asc')
+            ->get()
+            ->map(function ($reserva) {
+                Carbon::setLocale('es');
+                $reserva->fecha_formateada = Carbon::parse($reserva->fecha)->translatedFormat('l d-m-Y');
+                $reserva->hora_formateada = Carbon::parse($reserva->hora)->format('H:i');
+                return $reserva;
+            });
+
+        return view('backend.reservas.index', compact('reservas'));
     }
 }

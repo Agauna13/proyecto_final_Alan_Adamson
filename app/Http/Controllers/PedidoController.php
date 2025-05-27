@@ -48,15 +48,19 @@ class PedidoController extends Controller
 
         try {
 
-            if(session('reserva_temporal')){
+            if (session('reserva_temporal')) {
                 $reserva = Reserva::create(session('reserva_temporal'));
                 $reservaId = $reserva->id;
-
             }
 
             $mesaId = session('mesa_id');
+            $mesaOcupada = Mesa::where('estado', 'ocupada')->where('id', $mesaId)->exists();
 
-            if($mesaId){
+            if ($mesaOcupada) {
+                return redirect()->route('home')->with('error', "La mesa ya tiene un pedido pendiente");
+            }
+
+            if ($mesaId) {
                 $mesa = Mesa::find($mesaId);
                 $mesa->estado = 'ocupada';
                 $mesa->save();
@@ -71,10 +75,11 @@ class PedidoController extends Controller
 
             DB::commit();
 
-            session()->forget('reserva_temporal');
+            session()->forget('reserva_temporal', 'pedido');
             return redirect()->route('pedidos.confirmacion', ['pedido' => $pedido->id]);
         } catch (\Exception $e) {
             DB::rollBack();
+            session()->forget('reserva_temporal', 'pedido');
             return back()->with('error', 'Error al guardar el pedido: ' . $e->getMessage());
         }
     }
@@ -130,7 +135,12 @@ class PedidoController extends Controller
 
         $precioTotal = $totalProductos + $totalExtras;
 
-        return view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));
+        $response = response()->view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));
+        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        $response->header('Pragma', 'no-cache');
+        $response->header('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT');
+
+        return $response;/*view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));*/
     }
 
 

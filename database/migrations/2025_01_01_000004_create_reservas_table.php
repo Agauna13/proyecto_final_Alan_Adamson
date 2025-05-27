@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->foreignId('cliente_id')->constrained()->onDelete('cascade');
             $table->enum('sala_terraza', ['sala', 'terraza']);
+            $table->text('comentarios')->nullable();
             $table->timestamps();
         });
     }

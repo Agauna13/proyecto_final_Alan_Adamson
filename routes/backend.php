@@ -20,8 +20,14 @@ Route::post('/admin/pedidos/{pedido}/estado/{estado}', [AdminPedidoController::c
 Route::get('/mesasOcupadas', [AdminMesaController::class, 'mesasOcupadas'])->name('mesasOcupadas');
 Route::get('/salaTerraza/{sala_terraza}', [AdminMesaController::class, 'salaTerraza'])->name('salaTerraza');
 Route::resource('productos', AdminProductoController::class);
+
 Route::resource('pedidos', AdminPedidoController::class);
+Route::get('pedidos-del-dia', [AdminPedidoController::class, 'mostrarPedidosHoy'])->name('pedidos.hoy');
+Route::get('pedidos-de-la-seman', [AdminPedidoController::class, 'mostrarPedidosSemana'])->name('pedidos.semana');
 Route::resource('reservas', AdminReservaController::class);
+
+Route::get('reservas-del-dia', [AdminReservaController::class, 'mostrarReservasHoy'])->name('reservas.hoy');
+Route::get('reservas-de-la-seman', [AdminReservaController::class, 'mostrarReservasSemana'])->name('reservas.semana');
 Route::resource('clientes', AdminClienteController::class);
 Route::resource('mesas', AdminMesaController::class);
 Route::resource('facturas', AdminFacturaController::class);

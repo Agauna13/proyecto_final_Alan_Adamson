@@ -39,14 +39,14 @@
 
     @foreach ($productos->groupBy('grupo') as $grupo => $productosPorGrupo)
         <h2
-            class="desplegable cursor-pointer text-4xl font-extrabold text-center text-red-600 uppercase tracking-wider mb-10 drop-shadow-lg animate-pulse">
+            class="font-bernier desplegable cursor-pointer text-4xl font-extrabold text-center text-red-600 uppercase tracking-wider mb-10 drop-shadow-lg animate-pulse">
             {{ ucfirst($grupo) }}
         </h2>
 
         <div class="grupo-contenido hidden">
             @foreach ($productosPorGrupo->groupBy('categoria') as $categoria => $productosPorCategoria)
                 <h3
-                    class="desplegable cursor-pointer text-2xl font-semibold border-b-2 border-red-600 pb-3 mb-6 uppercase tracking-wide flex items-center gap-2 text-gray-200">
+                    class="font-bernier desplegable cursor-pointer text-2xl font-semibold border-b-2 border-red-600 pb-3 mb-6 uppercase tracking-wide flex items-center gap-2 text-gray-200">
                     <span class="inline-block w-3 h-3 bg-red-600 rounded-full motion-safe:animate-bounce"></span>
                     {{ ucfirst($categoria) }}
                 </h3>
@@ -90,7 +90,6 @@
         </div>
     @endforeach
 
-    <!-- Separador final decorativo -->
     <div class="flex justify-center my-10">
         <div class="w-16 h-1 bg-red-600 rounded-full animate-pulse"></div>
     </div>
