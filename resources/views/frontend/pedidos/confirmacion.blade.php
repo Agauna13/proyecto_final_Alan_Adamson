@@ -50,7 +50,6 @@
                                     </select>
                                 </div>
                             @else
-                                {{-- Contadores para otras categorías --}}
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                     @foreach ($producto->extras as $extra)
                                         <div class="flex items-center justify-between bg-gray-800 rounded px-3 py-2 border border-red-700/30">
@@ -72,7 +71,6 @@
             @endforeach
         </div>
 
-        <!-- Entrantes opcionales -->
         @if ($entrantes->isNotEmpty())
             <div>
                 <h3 class="text-2xl font-semibold mb-4">Entrantes opcionales</h3>

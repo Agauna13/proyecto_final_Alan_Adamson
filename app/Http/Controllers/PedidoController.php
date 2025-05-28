@@ -17,24 +17,24 @@ use Illuminate\Support\Facades\Session;
 class PedidoController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * @param Request $request
      */
     public function store(Request $request)
     {
+        /**
+         * Creamos 2 arrays para almacenar los entrantes que el cliente pueda
+         * pedir adicionalmente y luego lo juntamos todo en un array único
+         * para manejar mejor los datos.
+         */
+        /** @var array $productosRequest */
         $productosRequest = $request->input('productos', []);
+        /** @var array $entrantesRequest */
         $entrantesRequest = $request->input('extras_entrantes', []);
 
         foreach ($entrantesRequest as $entrante => $cantidad) {
             if ($cantidad != 0) {
                 for ($i = 0; $i < $cantidad; $i++) {
+                    /** @var Producto|null $producto */
                     $producto = Producto::find($entrante);
                     $productosRequest[] = [
                         'producto_id' => $producto->id,
@@ -47,35 +47,54 @@ class PedidoController extends Controller
         DB::beginTransaction();
 
         try {
-
+            //Si la sesión tiene guardados datos destinados a una reserva la creamos
+            /** @var Reserva|null $reserva */
             if (session('reserva_temporal')) {
                 $reserva = Reserva::create(session('reserva_temporal'));
                 $reservaId = $reserva->id;
             }
 
+            /**
+             * Si el pedido viene de una mesa, nos quedamos el id que almacena
+             * el controlador de mesas en sesión y tras comprobar que no esté
+             * ocupada la marcamos como ocupada y seguimos
+             */
+            /** @var int|null $mesaId */
             $mesaId = session('mesa_id');
 
             if ($mesaId) {
+                /** @var bool $mesaOcupada */
                 $mesaOcupada = Mesa::where('estado', 'ocupada')->where('id', $mesaId)->exists();
 
                 if ($mesaOcupada) {
                     return redirect()->route('home')->with('error', "La mesa ya tiene un pedido pendiente");
                 }
 
+                /** @var Mesa|null $mesa */
                 $mesa = Mesa::find($mesaId);
                 $mesa->estado = 'ocupada';
                 $mesa->save();
             }
 
+            /**
+             * Si el pedido no tiene un id de mesa o reserva, nos rebota a la
+             * página de inicio para evitar pedidos duplicados si un cliente
+             * vuelve atrás tras la confirmación.
+             */
             if (!$mesaId && !isset($reservaId)) {
-                return redirect()->route('home')->with('error', 'No se puede crear el pedido sin reserva o mesa.');
+                return redirect()->route('home');
             }
 
+            /** @var Pedido $pedido */
             $pedido = Pedido::create([
                 'reserva_id' => $reservaId ?? null,
                 'mesa_id' => $mesaId,
             ]);
 
+            /**
+             * Insertamos los datos del pedido con su mesa o reserva (modularizado
+             * para mayor legibilidad)
+             */
             $this->insertData($productosRequest, $pedido);
 
             DB::commit();
@@ -84,13 +103,22 @@ class PedidoController extends Controller
             return redirect()->route('pedidos.confirmacion', ['pedido' => $pedido->id]);
         } catch (\Exception $e) {
             DB::rollBack();
-            session()->forget('reserva_temporal', 'pedido');
+            session()->forget(['reserva_temporal', 'pedido']);
             return back()->with('error', 'Error al guardar el pedido: ' . $e->getMessage());
         }
     }
 
+    /**
+     * @param array $productosRequest
+     * @param Pedido $pedido
+     */
     protected function insertData($productosRequest, $pedido)
     {
+        /**
+         * Del array de productos con entrantes extra que hemos formado,
+         * creamos el pedido en bbdd, primero en la tabla de pedidos y luego
+         * en las tablas intermedias que guardan las relaciones
+         */
         foreach ($productosRequest as $productoData) {
             $pedido->productos()->attach([
                 $productoData['producto_id'] => [
@@ -100,7 +128,7 @@ class PedidoController extends Controller
                 ]
             ]);
 
-
+            /** @var int|null $pivotId */
             $pivotId = DB::table('pedido_productos')
                 ->where('pedido_id', $pedido->id)
                 ->where('producto_id', $productoData['producto_id'])
@@ -124,20 +152,28 @@ class PedidoController extends Controller
     }
 
     /**
-     * Once the order is confirmed with the extra
+     * Método para hacer una redirección a la página de confirmación cuando
+     * el cliente confirma el pedido con sus extras en el segundo paso
+     * (después de guardar en bbdd).
+     */
+    /**
+     * @param Pedido $pedido
      */
     public function confirmacion(Pedido $pedido)
     {
         $pedido->load('pedidoProductos.producto', 'pedidoProductos.extras', 'reserva.cliente');
 
+        /** @var float $totalProductos */
         $totalProductos = $pedido->pedidoProductos->sum('precio_unitario');
 
+        /** @var float $totalExtras */
         $totalExtras = $pedido->pedidoProductos->flatMap(function ($unidad) {
             return $unidad->extras->map(function ($extra) {
                 return $extra->precio * $extra->pivot->cantidad;
             });
         })->sum();
 
+        /** @var float $precioTotal */
         $precioTotal = $totalProductos + $totalExtras;
 
         $response = response()->view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));
@@ -145,26 +181,40 @@ class PedidoController extends Controller
         $response->header('Pragma', 'no-cache');
         $response->header('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT');
 
-        return $response;/*view('frontend.pagos.confirmacion', compact('pedido', 'precioTotal'));*/
+        return $response;
     }
 
 
-
-
+    /**
+     * Método al que llegamos desde la primera carta de pedidos que mostramos al
+     * cliente. Busca en la Request los productos que el cliente haya
+     * seleccionado marcando una cantidad Mayor a 0 de ese producto y sumando a
+     * la vez al precio total, el precio de cada producto multiplicado por su
+     * cantidad.
+     */
+    /**
+     * @param Request $request
+     */
     public function redirectToPedido(Request $request)
     {
-        $cantidades = collect($request->input('cantidad'))->filter(fn($q) => $q > 0);
+        /** @var \Illuminate\Support\Collection $cantidades */
+        $cantidades = collect($request->input('cantidad'))->filter(fn($cantidad) => $cantidad > 0);
 
+        /** @var \Illuminate\Support\Collection $productoUnidades */
         $productoUnidades = collect();
+        /** @var float $precioTotal */
         $precioTotal = 0;
 
         foreach ($cantidades as $productoId => $cantidad) {
+            /** @var Producto|null $producto */
             $producto = Producto::with('extras')->find($productoId);
             $productoUnidades->push($producto);
             $precioTotal += $producto->precio;
+
             if ($cantidad > 1) {
                 for ($i = 0; $i < $cantidad - 1; $i++) {
                     $precioTotal += $producto->precio;
+                    /** @var Producto $replica */
                     $replica = $producto->replicate();
                     $replica->id = $productoId;
                     $productoUnidades->push($replica);
@@ -173,8 +223,12 @@ class PedidoController extends Controller
         }
 
         session(['precio_total' => $precioTotal]);
+
+        /** @var array|null $reservaData */
         $reservaData = session('reserva_temporal');
+        /** @var Mesa|null $mesa */
         $mesa = session()->has('mesa_id') ? Mesa::find(session('mesa_id')) : null;
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Producto> $entrantes */
         $entrantes = Producto::where('categoria', 'Entrantes')->get();
 
         return view('frontend.pedidos.confirmacion', [

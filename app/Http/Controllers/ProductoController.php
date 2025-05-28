@@ -9,10 +9,14 @@ use App\Http\Requests\UpdateProductoRequest;
 class ProductoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Redirigimos a la carta normal o la de pedidos dependiendo de la petición
+     *  del cliente
+     * @var int|null $reservaId
+     * @var int|null $mesaId
      */
     public function index(int $reservaId = null, int $mesaId = null)
     {
+        /** @var \Illuminate\Database\Eloquent\Collection<int, Producto> $productos */
         $productos = Producto::with('extras')->get();
 
         // Si hay mesa o reserva, mostramos la cartaPedidos.
@@ -20,56 +24,6 @@ class ProductoController extends Controller
             return view('frontend.carta.cartaPedidos', compact('productos'));
         }
 
-        // ⚠️ Esto puede crear redirección infinita si home vuelve a redirigir a redirectToCartaWithMesa.
-        // ¡Mejor muestra la carta general sin mesa directamente!
         return view('frontend.carta.carta', compact('productos'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProductoRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Producto $producto)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Producto $producto)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateProductoRequest $request, Producto $producto)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Producto $producto)
-    {
-        //
     }
 }
