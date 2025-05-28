@@ -54,16 +54,21 @@ class PedidoController extends Controller
             }
 
             $mesaId = session('mesa_id');
-            $mesaOcupada = Mesa::where('estado', 'ocupada')->where('id', $mesaId)->exists();
-
-            if ($mesaOcupada) {
-                return redirect()->route('home')->with('error', "La mesa ya tiene un pedido pendiente");
-            }
 
             if ($mesaId) {
+                $mesaOcupada = Mesa::where('estado', 'ocupada')->where('id', $mesaId)->exists();
+
+                if ($mesaOcupada) {
+                    return redirect()->route('home')->with('error', "La mesa ya tiene un pedido pendiente");
+                }
+
                 $mesa = Mesa::find($mesaId);
                 $mesa->estado = 'ocupada';
                 $mesa->save();
+            }
+
+            if (!$mesaId && !isset($reservaId)) {
+                return redirect()->route('home')->with('error', 'No se puede crear el pedido sin reserva o mesa.');
             }
 
             $pedido = Pedido::create([
@@ -75,7 +80,7 @@ class PedidoController extends Controller
 
             DB::commit();
 
-            session()->forget('reserva_temporal', 'pedido');
+            session()->forget(['reserva_temporal', 'pedido']);
             return redirect()->route('pedidos.confirmacion', ['pedido' => $pedido->id]);
         } catch (\Exception $e) {
             DB::rollBack();

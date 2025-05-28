@@ -3,9 +3,7 @@
 @section('content')
 <section
     class="bg-gradient-to-b from-black via-gray-900 to-black min-h-screen px-6 py-10 text-white font-sans relative overflow-hidden pb-28">
-    {{-- pb-28 para espacio al footer --}}
 
-    <!-- Mensaje introductorio -->
     <div class="max-w-3xl mx-auto mb-10 text-center animate-fade-in-down">
         <h2 class="text-3xl font-bold mb-2">Elige tus extras y entrantes</h2>
         <p class="text-gray-400 text-sm">Confirma tu pedido. Puedes añadir extras o entrantes opcionales antes de finalizar.</p>
@@ -43,7 +41,6 @@
                             <p class="text-sm italic text-gray-400 mb-2">Selecciona extras por unidad:</p>
 
                             @if ($producto->categoria === 'Licores')
-                                {{-- Select estilizado para licores --}}
                                 <div class="relative mt-2">
                                     <select name="productos[{{ $index }}][extra_licor]" class="block w-full rounded-md border border-red-600 bg-gray-900 text-white shadow-sm focus:border-red-600 focus:ring focus:ring-red-600/50">
                                         <option value="" class="text-black">Sin extra</option>

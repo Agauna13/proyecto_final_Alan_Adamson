@@ -45,7 +45,6 @@
         </div>
     </section>
 
-    {{-- COMIDAS / GALERÍA --}}
     <section class="py-16 bg-black text-white mb-12 sm:mb-6">
         <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
             <div class="mb-12 text-center max-w-2xl mx-auto">
@@ -58,47 +57,61 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="overflow-hidden rounded-xl group relative">
-                    <img src="{{ asset('images/hamburguesa.jpg') }}" alt="Hamburguesas"
-                        class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
-                        Hamburguesas caseras
+            <div class="flex overflow-x-auto no-scrollbar">
+                <div class="flex flex-nowrap">
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/rafaelo.jpeg') }}" alt="Hamburguesas"
+                            class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Hamburguesas caseras
+                        </div>
                     </div>
-                </div>
 
-                <div class="overflow-hidden rounded-xl group relative">
-                    <img src="{{ asset('images/nachos4q.png') }}" alt="Nachos"
-                        class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
-                        Nachos
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/nachos4q.png') }}" alt="Nachos"
+                            class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Nachos
+                        </div>
                     </div>
-                </div>
 
-                <div class="overflow-hidden rounded-xl group relative">
-                    <img src="{{ asset('images/sandwich.jpeg') }}" alt="Sandwich"
-                        class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
-                        Sandwiches
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/sandwich.jpeg') }}" alt="Sandwich"
+                            class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Sandwiches
+                        </div>
                     </div>
-                </div>
 
-                <div class="overflow-hidden rounded-xl group relative">
-                    <img src="{{ asset('images/pizza.png') }}" alt="Pizzas"
-                        class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div
-                        class="absolute bottom-0 left-0 right-0 bg-black/60 text-center py-2 text-sm font-semibold text-white font-bernier">
-                        Pizzas
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/pizza.png') }}" alt="Pizzas" class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Pizzas
+                        </div>
+                    </div>
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/bravas.jpeg') }}" alt="Pizzas" class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Bravas
+                        </div>
+                    </div>
+                    <div class="relative flex-shrink-0 w-64 h-64 group">
+                        <img src="{{ asset('images/tempura.jpeg') }}" alt="Pizzas" class="w-full h-full object-cover" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-black/60 text-center font-semibold font-bernier">
+                            Veganos
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- MAPA --}}
     <section class="py-20 bg-gray-950 text-white">
         <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">

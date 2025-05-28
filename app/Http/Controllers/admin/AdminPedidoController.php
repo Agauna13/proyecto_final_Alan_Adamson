@@ -88,7 +88,7 @@ class AdminPedidoController extends Controller
     public function destroy(int $id)
     {
         try {
-            Pedido::findOrFail($id)->delete(); // en vez de destroy()
+            Pedido::findOrFail($id)->delete();
 
             return redirect()->route('admin.pedidos.index')->with('success', 'Pedido eliminado correctamente');
         } catch (\Exception $e) {
@@ -105,41 +105,52 @@ class AdminPedidoController extends Controller
     }
 
     public function mostrarPedidosHoy()
-{
-    $hoy = Carbon::today();
+    {
+        $hoy = Carbon::today();
 
-    $pedidos = Pedido::with(['productos', 'reserva'])
-        ->whereDate('created_at', $hoy)
-        ->orderBy('created_at', 'asc')
-        ->get()
-        ->map(function ($pedido) {
-            Carbon::setLocale('es');
-            $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
-            $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
-            return $pedido;
-        });
+        $pedidos = Pedido::with(['productos', 'reserva'])
+            ->where(function ($query) use ($hoy) {
+                $query->whereHas('reserva', function ($q) use ($hoy) {
+                    $q->whereDate('fecha', $hoy);
+                })
+                    ->orWhereDoesntHave('reserva');
+            })
+            ->orderBy('created_at', 'asc')
+            ->get()
+            ->map(function ($pedido) {
+                Carbon::setLocale('es');
+                $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
+                $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
+                return $pedido;
+            });
 
-    return view('backend.pedidos.index', compact('pedidos'));
-}
+        return view('backend.pedidos.index', compact('pedidos'));
+    }
 
-public function mostrarPedidosSemana()
-{
-    $hoy = Carbon::today();
-    $fechaLimite = $hoy->copy()->addWeek();
 
-    $pedidos = Pedido::with(['productos', 'reserva'])
-        ->whereDate('created_at', '>=', $hoy)
-        ->whereDate('created_at', '<=', $fechaLimite)
-        ->orderBy('created_at', 'asc')
-        ->get()
-        ->map(function ($pedido) {
-            Carbon::setLocale('es');
-            $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
-            $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
-            return $pedido;
-        });
 
-    return view('backend.pedidos.index', compact('pedidos'));
-}
+    public function mostrarPedidosSemana()
+    {
+        $hoy = Carbon::today();
+        $fechaLimite = $hoy->copy()->addWeek();
 
+        $pedidos = Pedido::with(['productos', 'reserva'])
+            ->where(function ($query) use ($hoy, $fechaLimite) {
+                $query->whereHas('reserva', function ($q) use ($hoy, $fechaLimite) {
+                    $q->whereDate('fecha', '>=', $hoy)
+                        ->whereDate('fecha', '<=', $fechaLimite);
+                })
+                    ->orWhereDoesntHave('reserva');
+            })
+            ->orderBy('created_at', 'asc')
+            ->get()
+            ->map(function ($pedido) {
+                Carbon::setLocale('es');
+                $pedido->fecha_formateada = Carbon::parse($pedido->created_at)->translatedFormat('l d-m-Y');
+                $pedido->hora_formateada = Carbon::parse($pedido->created_at)->format('H:i');
+                return $pedido;
+            });
+
+        return view('backend.pedidos.index', compact('pedidos'));
+    }
 }

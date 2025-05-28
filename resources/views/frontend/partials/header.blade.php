@@ -1,5 +1,5 @@
 <header
-    class="flex flex-wrap justify-between items-center bg-black text-white px-6 py-4 sticky top-0 z-50 border-b border-red-700/70 backdrop-blur-sm animate-slideInFromTop">
+    class="flex flex-wrap justify-between items-center bg-black text-white px-12 py-8 sticky top-0 z-50 backdrop-blur-sm animate-slideInFromTop">
 
     <a href="{{ route('home') }}"
         class="font-bernier text-3xl sm:text-4xl font-black tracking-wide hover:scale-110 transition-transform duration-300 animate-slideInFromLeft mb-2 sm:mb-0">
