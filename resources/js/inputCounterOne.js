@@ -1,6 +1,10 @@
+
+/**
+ * Script para el contador que suma el total de pedidos en las vistas de pedido
+ * en la carta de pedidos principal
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const totalElement = document.getElementById('precioTotalFooter');
-    // Seleccionamos el formulario por acción (ajusta si cambias ruta)
     const form = document.getElementById('form-productos');
     if (!form) {
         console.warn('Formulario no encontrado');
@@ -11,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function actualizarTotal() {
         let total = 0;
-
-        // Suma todos los inputs cantidad con data-precio dentro del form
         const cantidades = form.querySelectorAll('input.cantidad-input[data-precio]');
         cantidades.forEach(input => {
             const precio = parseFloat(input.dataset.precio) || 0;

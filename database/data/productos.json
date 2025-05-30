@@ -478,28 +478,28 @@
     },
     {
         "nombre": "Pa amb oli Mixto (Con serrano y queso)",
-        "categoria": "Pam amb oli",
+        "categoria": "Pa amb oli",
         "precio": "10.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
         "nombre": "Pa amb oli Mallorquín (Con panceta, sobrasada y camaiot)",
-        "categoria": "Pam amb oli",
+        "categoria": "Pa amb oli",
         "precio": "13.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
         "nombre": "Pa amb oli Cabrero con lomo y queso de cabra",
-        "categoria": "Pam amb oli",
+        "categoria": "Pa amb oli",
         "precio": "13.00",
         "grupo": "comida",
         "css_id": "pamboli"
     },
     {
         "nombre": "Pa amb oli Marinero con anchoas y atún",
-        "categoria": "Pam amb oli",
+        "categoria": "Pa amb oli",
         "precio": "11.00",
         "grupo": "comida",
         "css_id": "pamboli"

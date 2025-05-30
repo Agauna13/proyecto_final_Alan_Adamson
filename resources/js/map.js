@@ -1,3 +1,9 @@
+/**
+ * Fuente y autor https://leafletjs.com/examples/quick-start/ para el mapa de
+ * la landing
+ */
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var lat = 39.58043222712172;
     var lng = 2.6764944692251316;

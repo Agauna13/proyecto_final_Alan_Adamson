@@ -1,14 +1,7 @@
-/*document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.desplegable').forEach(item => {
-        item.addEventListener('click', (event) => {
-            // El siguiente hermano es el contenido que se oculta/muestra
-            const content = event.target.nextElementSibling;
-            if (content) {
-                content.classList.toggle('hidden');
-            }
-        });
-    });
-});*/
+/**
+ * Script simple para cambiar quitar/poner el estado 'oculto' en las diferentes
+ * secciones de la carta
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.desplegable').forEach(el => {

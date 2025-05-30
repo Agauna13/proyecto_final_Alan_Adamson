@@ -26,6 +26,22 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
+        /**
+         * Validación de laravel, con este simple bloque podemos validar los
+         * datos de entrada del formulario de resrvas gracias a la mágia de laravel.
+         */
+        $request->validate([
+            'nombre' => ['required', 'regex:/^[\pL\s]+$/u', 'max:255'],
+            'telefono' => ['required', 'regex:/^[679]\d{8}$/'],
+            'email' => 'nullable|email|max:255',
+            'pax' => ['required', 'integer', 'min:1'],
+            'fecha' => 'required|date|after_or_equal:today',
+            'hora' => 'required|date_format:H:i',
+            'sala_terraza' => 'required|in:sala,terraza',
+            'comentarios' => 'nullable|string|max:1000',
+            'action' => ['required', 'in:pedido,guardar'],
+        ]);
+
         /** @var \Illuminate\Http\RedirectResponse|\Illuminate\View\View $disponibilidad */
         $disponibilidad = $this->comprobarDisponibilidad($request);
 

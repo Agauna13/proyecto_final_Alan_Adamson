@@ -1,9 +1,11 @@
+@extends('auth.layout')
+
+@section('content')
     <div
         class="flex flex-col min-h-screen bg-white rounded-2xl shadow-lg border border-gray-200 justify-center items-center p-6">
         <h1 class="text-3xl font-extrabold text-indigo-700 tracking-wide mb-6 text-center">Iniciar Sesión</h1>
 
         <div class="w-full max-w-md bg-white border border-gray-300 rounded-xl shadow p-6">
-            <!-- Session Status -->
             @if (session('status'))
                 <div class="mb-4 text-green-600 font-semibold text-sm">
                     {{ session('status') }}
@@ -12,8 +14,6 @@
 
             <form method="POST" action="{{ route('login') }}" class="space-y-5">
                 @csrf
-
-                <!-- Email -->
                 <div>
                     <label for="email" class="block text-xs uppercase text-gray-600 font-semibold">Correo
                         Electrónico</label>
@@ -24,8 +24,6 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <!-- Password -->
                 <div>
                     <label for="password" class="block text-xs uppercase text-gray-600 font-semibold">Contraseña</label>
                     <input id="password" type="password" name="password" required autocomplete="current-password"
@@ -35,8 +33,6 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-
-                <!-- Remember Me -->
                 <div class="flex items-center gap-2">
                     <input id="remember_me" type="checkbox" name="remember"
                         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-400 focus:outline-none">
@@ -59,3 +55,4 @@
             </form>
         </div>
     </div>
+@endsection
