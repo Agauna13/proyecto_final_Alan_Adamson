@@ -2,14 +2,12 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-6">
-    {{-- Encabezado compacto --}}
     <div class="bg-indigo-600 rounded-xl text-white p-4 mb-4 shadow flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <h1 class="text-lg sm:text-xl font-semibold">Nueva Reserva</h1>
         <a href="{{ route('admin.reservas.index') }}"
             class="px-3 py-1 text-xs bg-white text-indigo-600 font-semibold rounded-full shadow hover:bg-gray-100 transition">Volver a Reservas</a>
     </div>
 
-    {{-- Mensajes de éxito y error --}}
     @if (session('success'))
         <div class="mb-4 p-3 bg-green-100 text-green-700 border border-green-300 rounded text-xs shadow">
             {{ session('success') }}
@@ -32,19 +30,16 @@
         </div>
     @endif
 
-    {{-- Formulario --}}
     <div class="bg-white rounded-xl shadow p-4">
         <form method="POST" action="{{ route('admin.reservas.store') }}" class="grid grid-cols-1 gap-4">
             @csrf
 
-            {{-- Nombre --}}
             <div>
                 <label for="nombre" class="block text-xs font-semibold text-gray-600">Nombre del Cliente</label>
                 <input type="text" name="nombre" id="nombre" value="{{ old('nombre') }}"
                     class="mt-1 block w-full rounded border-gray-300 text-xs focus:ring-indigo-500 focus:border-indigo-500">
             </div>
 
-            {{-- Teléfono y Email --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>
                     <label for="telefono" class="block text-xs font-semibold text-gray-600">Teléfono</label>
@@ -58,7 +53,6 @@
                 </div>
             </div>
 
-            {{-- Pax y Ubicación --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>
                     <label for="pax" class="block text-xs font-semibold text-gray-600">Número de Personas (Pax)</label>
@@ -75,7 +69,6 @@
                 </div>
             </div>
 
-            {{-- Fecha y Hora --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>
                     <label for="fecha" class="block text-xs font-semibold text-gray-600">Fecha</label>
@@ -89,7 +82,6 @@
                 </div>
             </div>
 
-            {{-- Botón --}}
             <div class="pt-2">
                 <button type="submit"
                     class="w-full md:w-auto px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded hover:bg-indigo-700 shadow transition">

@@ -38,7 +38,6 @@
             @endif
         </div>
 
-        {{-- Pedidos Pendientes --}}
         <div class="mb-10">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">🕒 Pedidos Pendientes</h2>
 
@@ -65,7 +64,6 @@
             @endif
         </div>
 
-        {{-- Pedidos Servidos --}}
         <div>
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">📅 Histórico de pedidos</h2>
 

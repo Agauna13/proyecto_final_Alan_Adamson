@@ -42,7 +42,6 @@
         </div>
         @endif
 
-        {{-- Terraza --}}
         @if ($mesas_terraza && $mesas_terraza->count())
         <div>
             <h2 class="text-lg font-bold text-indigo-700 mb-3">Terraza</h2>
