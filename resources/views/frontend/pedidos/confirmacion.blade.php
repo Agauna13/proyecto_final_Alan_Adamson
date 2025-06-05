@@ -94,16 +94,24 @@
 </section>
 
 <footer
-    class="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-md border-t border-red-700/60 px-6 py-4 flex justify-center shadow-lg z-50">
-    <div class="w-full max-w-3xl flex justify-between items-center gap-4">
-        <span class="text-white font-bold text-lg whitespace-nowrap" id="precioTotalFooter">Total: 0.00 €</span>
+    class="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-md border-t border-red-700/60 px-4 py-4 shadow-lg z-50">
+    <div class="w-full max-w-5xl mx-auto flex flex-wrap justify-center sm:justify-between items-center gap-4">
 
-        <button form="pedidoForm" type="submit"
-            class="bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-xl font-bold shadow-md hover:shadow-red-700/50">
-            Confirmar Pedido
-        </button>
+        <span class="text-white font-bold text-base sm:text-lg whitespace-nowrap min-w-[140px]" id="precioTotalFooter">
+            Total: 0.00 €
+        </span>
+        <div class="flex flex-wrap justify-center gap-3">
+            <a href="{{ route('home') }}"
+                class="bg-red-600 hover:bg-red-700 transition text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold shadow">
+                Cancelar
+            </a>
+            <button form="pedidoForm" type="submit"
+                class="bg-green-600 hover:bg-green-500 transition duration- text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold shadow">
+                Confirmar Pedido
+            </button>
+        </div>
+
     </div>
 </footer>
-
 @vite('resources/js/inputCounterTwo.js')
 @endsection
